@@ -1,0 +1,237 @@
+﻿<Window x:Class="FFXIVAPP.Plugin.Widgets.Windows.EnmityWidget"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:PluginProperties="clr-namespace:FFXIVAPP.Plugin.Widgets.Properties"
+        xmlns:ViewModels="clr-namespace:FFXIVAPP.Plugin.Widgets.Windows"
+        xmlns:commonConverters="clr-namespace:FFXIVAPP.Common.Converters;assembly=FFXIVAPP.Common"
+        xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+        xmlns:converters="clr-namespace:FFXIVAPP.Plugin.Widgets.Converters"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="EnmityWidget"
+        Width="{Binding EnmityWidgetWidth,
+                        Source={x:Static PluginProperties:Settings.Default},
+                        Mode=TwoWay}"
+        Height="{Binding EnmityWidgetHeight,
+                         Source={x:Static PluginProperties:Settings.Default},
+                         Mode=TwoWay}"
+        MinWidth="200"
+        MinHeight="360"
+        MaxWidth="375"
+        MaxHeight="600"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Closing="Widget_OnClosing"
+        Left="{Binding EnmityWidgetLeft,
+                       Mode=TwoWay,
+                       Source={x:Static PluginProperties:Settings.Default}}"
+        Opacity="{Binding WidgetOpacity,
+                          Source={x:Static PluginProperties:Settings.Default}}"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        Top="{Binding EnmityWidgetTop,
+                      Mode=TwoWay,
+                      Source={x:Static PluginProperties:Settings.Default}}"
+        WindowStyle="None">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <commonConverters:VisibilityConverter x:Key="VisibilityConverter" />
+            <converters:StringToBrushConverter x:Key="StringToBrushConverter" />
+            <x:Static x:Key="EnmityWidgetViewModel"
+                      Member="ViewModels:EnmityWidgetViewModel.Instance" />
+            <x:Static x:Key="Settings"
+                      Member="PluginProperties:Settings.Default" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/FFXIVAPP.Plugin.Widgets;component/Resources/WidgetStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.LayoutTransform>
+            <ScaleTransform ScaleX="{Binding EnmityWidgetUIScale,
+                                             Source={StaticResource Settings}}"
+                            ScaleY="{Binding EnmityWidgetUIScale,
+                                             Source={StaticResource Settings}}" />
+        </Grid.LayoutTransform>
+        <StackPanel>
+            <DockPanel LastChildFill="True"
+                       Visibility="{Binding ShowTitlesOnWidgets,
+                                            Source={StaticResource Settings},
+                                            Converter={StaticResource VisibilityConverter}}">
+                <Border Margin="5 0 5 5"
+                        Background="WhiteSmoke"
+                        BorderBrush="Black"
+                        BorderThickness="1"
+                        CornerRadius="2">
+                    <DockPanel LastChildFill="True">
+                        <Button x:Name="WidgetClose"
+                                Width="15"
+                                Height="15"
+                                Margin="2"
+                                Click="WidgetClose_OnClick"
+                                DockPanel.Dock="Right"
+                                Padding="0"
+                                ToolTip="Close">
+                            <Path Data="M0,0 L5,5 M0,5 L5,0"
+                                  Stretch="None"
+                                  Stroke="Black" />
+                        </Button>
+                        <DockPanel Background="WhiteSmoke"
+                                   PreviewMouseDown="TitleBar_OnPreviewMouseDown">
+                            <Grid>
+                                <TextBlock Grid.Row="0"
+                                           Margin="5 -1"
+                                           HorizontalAlignment="Right"
+                                           FontSize="14"
+                                           FontWeight="Bold"
+                                           Foreground="Black"
+                                           Padding="0"
+                                           Text="[ENMITY]" />
+                                <TextBlock Grid.Row="0"
+                                           Margin="5 2"
+                                           HorizontalAlignment="Left"
+                                           FontSize="10"
+                                           FontWeight="Bold"
+                                           Foreground="Black"
+                                           Padding="0"
+                                           Text="FFXIV-APP" />
+                            </Grid>
+                        </DockPanel>
+                    </DockPanel>
+                </Border>
+            </DockPanel>
+            <StackPanel x:Name="EnmityWidgetTargetInfo"
+                        Margin="5 1"
+                        DataContext="{Binding TargetEntity.CurrentTarget,
+                                              Source={StaticResource EnmityWidgetViewModel}}"
+                        Visibility="{Binding ShowEnmityWidgetCurrentTargetInfo,
+                                             Source={StaticResource Settings},
+                                             Converter={StaticResource VisibilityConverter}}">
+                <Grid Visibility="{Binding EnmityTargetIsValid,
+                                           Source={StaticResource EnmityWidgetViewModel},
+                                           Converter={StaticResource VisibilityConverter}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="1"
+                            Margin="5 0"
+                            VerticalAlignment="Bottom"
+                            Background="WhiteSmoke"
+                            BorderBrush="Black"
+                            BorderThickness="1"
+                            CornerRadius="2">
+                        <TextBlock Margin="5 1"
+                                   HorizontalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Foreground="Black"
+                                   Style="{StaticResource StatLabelStyle}"
+                                   Text="{Binding Name}" />
+                    </Border>
+                    <ProgressBar Grid.Row="0"
+                                 Grid.RowSpan="2"
+                                 Height="18"
+                                 VerticalAlignment="Top"
+                                 BorderBrush="Black"
+                                 Foreground="{Binding DefaultProgressBarForeground,
+                                                      Source={StaticResource Settings},
+                                                      Converter={StaticResource StringToBrushConverter}}"
+                                 Maximum="1"
+                                 Minimum="0"
+                                 Style="{StaticResource ProgressBarStyleStopAnimation}"
+                                 Value="{Binding EnmityTargetHPPercent,
+                                                 Source={StaticResource EnmityWidgetViewModel}}" />
+                    <TextBlock Grid.Row="0"
+                               Margin="5 0"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               FontWeight="Bold"
+                               Foreground="Black"
+                               Style="{StaticResource CommaNumberStyle}"
+                               Text="{Binding HPCurrent,
+                                              StringFormat={}{0:N0}}" />
+                    <TextBlock Grid.Row="0"
+                               Margin="5 0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontWeight="Bold"
+                               Foreground="Black"
+                               Style="{StaticResource PercentStyle}"
+                               Text="{Binding HPPercent,
+                                              StringFormat={}{0:P}}" />
+                    <TextBlock Grid.Row="0"
+                               Margin="5 0"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               FontWeight="Bold"
+                               Foreground="Black"
+                               Style="{StaticResource DecimalStyle}"
+                               Text="{Binding EnmityTargetDistance,
+                                              Source={StaticResource EnmityWidgetViewModel},
+                                              StringFormat={}{0:N2}}" />
+                </Grid>
+            </StackPanel>
+            <ItemsControl>
+                <ItemsControl.Resources>
+                    <CollectionViewSource x:Key="Party"
+                                          Source="{Binding TargetEntity.EnmityEntries,
+                                                           Source={StaticResource EnmityWidgetViewModel}}">
+                        <CollectionViewSource.SortDescriptions>
+                            <componentModel:SortDescription Direction="Descending"
+                                                            PropertyName="Enmity" />
+                        </CollectionViewSource.SortDescriptions>
+                    </CollectionViewSource>
+                </ItemsControl.Resources>
+                <ItemsControl.ItemsSource>
+                    <Binding Source="{StaticResource Party}" />
+                </ItemsControl.ItemsSource>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="5 1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <ProgressBar Grid.Row="0"
+                                             Grid.RowSpan="2"
+                                             Height="18"
+                                             VerticalAlignment="Top"
+                                             BorderBrush="Black"
+                                             Maximum="1"
+                                             Minimum="0"
+                                             Style="{StaticResource ProgressBarStyleStopAnimation}"
+                                             Value="0" />
+                                <TextBlock Grid.Row="0"
+                                           Margin="5 0"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           FontWeight="Bold"
+                                           Foreground="Black"
+                                           Style="{StaticResource CommaNumberStyle}"
+                                           Text="{Binding Enmity,
+                                                          StringFormat={}{0:N0}}" />
+                                <TextBlock Grid.Row="0"
+                                           Margin="5 0"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           FontWeight="Bold"
+                                           Foreground="Black"
+                                           Style="{StaticResource StatLabelStyle}"
+                                           Text="{Binding Name}" />
+                            </Grid>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </StackPanel>
+    </Grid>
+</Window>
