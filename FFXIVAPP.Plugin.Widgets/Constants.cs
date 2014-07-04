@@ -53,8 +53,9 @@ namespace FFXIVAPP.Plugin.Widgets
         {
             get
             {
-                return Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly()
-                                                             .CodeBase).LocalPath);
+                var appDirectory = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly()
+                                                                         .CodeBase).LocalPath);
+                return Path.Combine(appDirectory, "Plugins", Plugin.PName);
             }
         }
 
