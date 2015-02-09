@@ -20,7 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\build\Debug\Plugins\FFXIVAPP.Plugin.Widgets\</OutputPath>
+    <OutputPath>..\build\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -44,9 +44,6 @@
     <Reference Include="FFXIVAPP.IPluginInterface, Version=2.0.5089.20109, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ffxivapp-resources\FFXIVAPP.IPluginInterface.dll</HintPath>
-    </Reference>
-    <Reference Include="FFXIVAPP.Localization">
-      <HintPath>..\..\ffxivapp-resources\FFXIVAPP.Localization.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -89,9 +86,15 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Converters\StringToBrushConverter.cs" />
     <Compile Include="EventSubscriber.cs" />
+    <Compile Include="Helpers\LocaleHelper.cs" />
     <Compile Include="Helpers\WidgetTopMostHelper.cs" />
     <Compile Include="Initializer.cs" />
     <Compile Include="Interop\WinAPI.cs" />
+    <Compile Include="Localization\Chinese.cs" />
+    <Compile Include="Localization\English.cs" />
+    <Compile Include="Localization\French.cs" />
+    <Compile Include="Localization\German.cs" />
+    <Compile Include="Localization\Japanese.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="PluginException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
