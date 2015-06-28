@@ -69,6 +69,11 @@ namespace FFXIVAPP.Plugin.Widgets.Localization
             Dictionary.Add("widgets_PlayerVisibilityThresholdHeader", "プレイヤー可視率しきい値");
             Dictionary.Add("widgets_EnmityShowCurrentTargetInfoHeader", "現在のターゲットを表示する");
             Dictionary.Add("widgets_WidgetSettingsTabHeader", "ウィジェット設定");
+            Dictionary.Add("widgets_AboutColorsParsingLabel", "* Colors are used as either ARGB (Alpha, Red, Green, Blue) or a named color (SkyBlue)");
+            Dictionary.Add("widgets_ColorsJobsLabel", "COLORS:JOBS");
+            Dictionary.Add("widgets_EnmityWidgetSettingsTabLabel", "SETTINGS:ENMITY");
+            Dictionary.Add("widgets_FocusTargetWidgetSettingsTabLabel", "SETTINGS:FOCUS TARGET");
+            Dictionary.Add("widgets_CurrentTargetWidgetSettingsTabLabel", "SETTINGS:CURRENT TARGET");
             return Dictionary;
         }
     }

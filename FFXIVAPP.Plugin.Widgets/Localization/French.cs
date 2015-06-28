@@ -47,9 +47,9 @@ namespace FFXIVAPP.Plugin.Widgets.Localization
             Dictionary.Add("widgets_DPSTitleBar", "[DPS]");
             Dictionary.Add("widgets_HPSTitleBar", "[HPS]");
             Dictionary.Add("widgets_DTPSTitleBar", "[DTPS]");
-            Dictionary.Add("widgets_EnmityTitleBar", "[Enmity]");
-            Dictionary.Add("widgets_FocusTitleBar", "[Focus]");
-            Dictionary.Add("widgets_CurrentTitleBar", "[Current]");
+            Dictionary.Add("widgets_EnmityTitleBar", "[ENMITY]");
+            Dictionary.Add("widgets_FocusTitleBar", "[FOCUS]");
+            Dictionary.Add("widgets_CurrentTitleBar", "[CURRENT]");
             Dictionary.Add("widgets_DPSWidgetHeader", "DPS Widget");
             Dictionary.Add("widgets_HPSWidgetHeader", "HPS Widget");
             Dictionary.Add("widgets_DTPSWidgetHeader", "DTPS Widget");
@@ -69,6 +69,11 @@ namespace FFXIVAPP.Plugin.Widgets.Localization
             Dictionary.Add("widgets_PlayerVisibilityThresholdHeader", "Player Visibility Threshold");
             Dictionary.Add("widgets_EnmityShowCurrentTargetInfoHeader", "Show Current Target");
             Dictionary.Add("widgets_WidgetSettingsTabHeader", "Widget Settings");
+            Dictionary.Add("widgets_AboutColorsParsingLabel", "* Colors are used as either ARGB (Alpha, Red, Green, Blue) or a named color (SkyBlue)");
+            Dictionary.Add("widgets_ColorsJobsLabel", "COLORS:JOBS");
+            Dictionary.Add("widgets_EnmityWidgetSettingsTabLabel", "SETTINGS:ENMITY");
+            Dictionary.Add("widgets_FocusTargetWidgetSettingsTabLabel", "SETTINGS:FOCUS TARGET");
+            Dictionary.Add("widgets_CurrentTargetWidgetSettingsTabLabel", "SETTINGS:CURRENT TARGET");
             return Dictionary;
         }
     }
