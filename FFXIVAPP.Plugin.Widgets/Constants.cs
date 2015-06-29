@@ -46,7 +46,7 @@ namespace FFXIVAPP.Plugin.Widgets
 
         public static readonly string[] Supported = new[]
         {
-            "ja", "fr", "en", "de"
+            "ja", "fr", "en", "de", "ru"
         };
 
         public static string BaseDirectory

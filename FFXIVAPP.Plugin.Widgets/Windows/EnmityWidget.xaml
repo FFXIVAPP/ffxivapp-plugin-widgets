@@ -8,6 +8,7 @@
         xmlns:converters="clr-namespace:FFXIVAPP.Plugin.Widgets.Converters"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:widgets="clr-namespace:FFXIVAPP.Plugin.Widgets"
         Title="EnmityWidget"
         Width="{Binding EnmityWidgetWidth,
                         Source={x:Static PluginProperties:Settings.Default},
@@ -38,6 +39,8 @@
         <ResourceDictionary>
             <commonConverters:VisibilityConverter x:Key="VisibilityConverter" />
             <converters:StringToBrushConverter x:Key="StringToBrushConverter" />
+            <x:Static x:Key="PluginViewModel"
+                      Member="widgets:PluginViewModel.Instance" />
             <x:Static x:Key="EnmityWidgetViewModel"
                       Member="ViewModels:EnmityWidgetViewModel.Instance" />
             <x:Static x:Key="Settings"
@@ -88,7 +91,8 @@
                                            FontWeight="Bold"
                                            Foreground="Black"
                                            Padding="0"
-                                           Text="[ENMITY]" />
+                                           Text="{Binding Locale[widgets_EnmityTitleBar],
+                                                          Source={StaticResource PluginViewModel}}" />
                                 <TextBlock Grid.Row="0"
                                            Margin="5 2"
                                            HorizontalAlignment="Left"

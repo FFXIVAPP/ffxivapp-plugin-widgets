@@ -7,6 +7,7 @@
         xmlns:converters="clr-namespace:FFXIVAPP.Plugin.Widgets.Converters"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:widgets="clr-namespace:FFXIVAPP.Plugin.Widgets"
         Title="CurrentTargetWidget"
         Width="{Binding CurrentTargetWidgetWidth,
                         Source={x:Static PluginProperties:Settings.Default},
@@ -35,6 +36,8 @@
 
     <Window.Resources>
         <ResourceDictionary>
+            <x:Static x:Key="PluginViewModel"
+                      Member="widgets:PluginViewModel.Instance" />
             <x:Static x:Key="Settings"
                       Member="PluginProperties:Settings.Default" />
             <commonConverters:VisibilityConverter x:Key="VisibilityConverter" />
@@ -87,7 +90,8 @@
                                            FontWeight="Bold"
                                            Foreground="Black"
                                            Padding="0"
-                                           Text="[CURRENT]" />
+                                           Text="{Binding Locale[widgets_CurrentTitleBar],
+                                                          Source={StaticResource PluginViewModel}}" />
                                 <TextBlock Grid.Row="0"
                                            Margin="5 2"
                                            HorizontalAlignment="Left"

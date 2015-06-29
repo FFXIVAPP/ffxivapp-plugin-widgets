@@ -59,15 +59,15 @@
                                       Source={StaticResource PluginViewModel}}">
                 <ScrollViewer>
                     <StackPanel>
-                        <TextBlock TextWrapping="WrapWithOverflow">
-                            * Colors are used as either ARGB (Alpha, Red, Green, Blue) or a named color (SkyBlue)
-                        </TextBlock>
+                        <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Locale[widgets_AboutColorsParsingLabel],
+                                                   Source={StaticResource PluginViewModel}}" />
                         <GroupBox Header="{Binding Locale[widgets_DefaultProgressBarForegroundHeader],
                                                    Source={StaticResource PluginViewModel}}">
                             <TextBox Text="{Binding DefaultProgressBarForeground,
                                                     Source={StaticResource Settings}}" />
                         </GroupBox>
-                        <Expander Header="COLORS:JOBS">
+                        <Expander Header="{Binding Locale[widgets_ColorsJobsLabel],
+                                                   Source={StaticResource PluginViewModel}}">
                             <StackPanel>
                                 <GroupBox Header="PLD">
                                     <TextBox Text="{Binding PLDProgressBarForeground,
@@ -115,7 +115,8 @@
                                       Source={StaticResource PluginViewModel}}">
                 <ScrollViewer>
                     <StackPanel>
-                        <Expander Header="Settings:Enmity">
+                        <Expander Header="{Binding Locale[widgets_EnmityWidgetSettingsTabLabel],
+                                                           Source={StaticResource PluginViewModel}}">
                             <StackPanel>
                                 <GroupBox Header="{Binding Locale[widgets_UIScaleHeader],
                                                            Source={StaticResource PluginViewModel}}">
@@ -137,7 +138,8 @@
                                 </GroupBox>
                             </StackPanel>
                         </Expander>
-                        <Expander Header="Settings:Focus Target">
+                        <Expander Header="{Binding Locale[widgets_FocusTargetWidgetSettingsTabLabel],
+                                                               Source={StaticResource PluginViewModel}}">
                             <StackPanel>
                                 <StackPanel>
                                     <GroupBox Header="{Binding Locale[widgets_UIScaleHeader],
@@ -154,7 +156,8 @@
                                 </StackPanel>
                             </StackPanel>
                         </Expander>
-                        <Expander Header="Settings:Current Target">
+                        <Expander Header="{Binding Locale[widgets_CurrentTargetWidgetSettingsTabLabel],
+                                                           Source={StaticResource PluginViewModel}}">
                             <StackPanel>
                                 <GroupBox Header="{Binding Locale[widgets_UIScaleHeader],
                                                            Source={StaticResource PluginViewModel}}">
