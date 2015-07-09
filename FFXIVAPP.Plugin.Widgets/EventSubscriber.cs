@@ -32,6 +32,7 @@ using System.Linq;
 using FFXIVAPP.Common.Core.Memory;
 using FFXIVAPP.IPluginInterface.Events;
 using FFXIVAPP.Plugin.Widgets.Properties;
+using FFXIVAPP.Plugin.Widgets.ViewModels;
 using FFXIVAPP.Plugin.Widgets.Windows;
 
 namespace FFXIVAPP.Plugin.Widgets
@@ -142,10 +143,7 @@ namespace FFXIVAPP.Plugin.Widgets
                 return;
             }
             var pcEntities = actorEntitiesEvent.ActorEntities;
-            if (pcEntities.Any())
-            {
-                Constants.CurrentUser = pcEntities.FirstOrDefault();
-            }
+            XIVInfoViewModel.Instance.CurrentPCs = pcEntities;
         }
 
         //private static void OnNewPlayerEntity(object sender, PlayerEntityEvent playerEntityEvent)
@@ -195,7 +193,7 @@ namespace FFXIVAPP.Plugin.Widgets
                 EnmityWidgetViewModel.Instance.EnmityTargetHPPercent = (double) targetEntity.CurrentTarget.HPPercent;
                 try
                 {
-                    EnmityWidgetViewModel.Instance.EnmityTargetDistance = Constants.CurrentUser.GetDistanceTo(targetEntity.CurrentTarget);
+                    EnmityWidgetViewModel.Instance.EnmityTargetDistance = XIVInfoViewModel.Instance.CurrentUser.GetDistanceTo(targetEntity.CurrentTarget);
                 }
                 catch (Exception ex)
                 {
@@ -209,7 +207,7 @@ namespace FFXIVAPP.Plugin.Widgets
                 CurrentTargetWidgetViewModel.Instance.CurrentTargetHPPercent = (double) targetEntity.CurrentTarget.HPPercent;
                 try
                 {
-                    CurrentTargetWidgetViewModel.Instance.CurrentTargetDistance = Constants.CurrentUser.GetDistanceTo(targetEntity.CurrentTarget);
+                    CurrentTargetWidgetViewModel.Instance.CurrentTargetDistance = XIVInfoViewModel.Instance.CurrentUser.GetDistanceTo(targetEntity.CurrentTarget);
                 }
                 catch (Exception ex)
                 {
@@ -223,7 +221,7 @@ namespace FFXIVAPP.Plugin.Widgets
                 FocusTargetWidgetViewModel.Instance.FocusTargetHPPercent = (double) targetEntity.FocusTarget.HPPercent;
                 try
                 {
-                    FocusTargetWidgetViewModel.Instance.FocusTargetDistance = Constants.CurrentUser.GetDistanceTo(targetEntity.FocusTarget);
+                    FocusTargetWidgetViewModel.Instance.FocusTargetDistance = XIVInfoViewModel.Instance.CurrentUser.GetDistanceTo(targetEntity.FocusTarget);
                 }
                 catch (Exception ex)
                 {
