@@ -42,6 +42,7 @@ namespace FFXIVAPP.Plugin.Widgets.ViewModels
         #region Property Bindings
 
         private static XIVInfoViewModel _instance;
+        private ActorEntity _currentUser;
         private ConcurrentDictionary<UInt32, ActorEntity> _currentMonsters;
         private ConcurrentDictionary<uint, ActorEntity> _currentNPCs;
         private ConcurrentDictionary<uint, ActorEntity> _currentPCs;
@@ -54,14 +55,11 @@ namespace FFXIVAPP.Plugin.Widgets.ViewModels
 
         public ActorEntity CurrentUser
         {
-            get
+            get { return _currentUser; }
+            set
             {
-                if (CurrentPCs.Any())
-                {
-                    return CurrentPCs.FirstOrDefault()
-                                     .Value;
-                }
-                return null;
+                _currentUser = value;
+                RaisePropertyChanged();
             }
         }
 
@@ -71,6 +69,11 @@ namespace FFXIVAPP.Plugin.Widgets.ViewModels
             set
             {
                 _currentNPCs = value;
+                if (value.Any())
+                {
+                    CurrentUser = value.FirstOrDefault()
+                                       .Value.CurrentUser;
+                }
                 RaisePropertyChanged();
             }
         }
@@ -81,6 +84,11 @@ namespace FFXIVAPP.Plugin.Widgets.ViewModels
             set
             {
                 _currentMonsters = value;
+                if (value.Any())
+                {
+                    CurrentUser = value.FirstOrDefault()
+                                       .Value.CurrentUser;
+                }
                 RaisePropertyChanged();
             }
         }
@@ -91,6 +99,11 @@ namespace FFXIVAPP.Plugin.Widgets.ViewModels
             set
             {
                 _currentPCs = value;
+                if (value.Any())
+                {
+                    CurrentUser = value.FirstOrDefault()
+                                       .Value.CurrentUser;
+                }
                 RaisePropertyChanged();
             }
         }
