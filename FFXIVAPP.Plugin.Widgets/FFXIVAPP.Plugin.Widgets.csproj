@@ -111,6 +111,7 @@
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SampleViewModel.cs" />
+    <Compile Include="ViewModels\XIVInfoViewModel.cs" />
     <Compile Include="Views\AboutView.xaml.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>

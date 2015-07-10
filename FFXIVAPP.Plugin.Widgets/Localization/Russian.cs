@@ -1,8 +1,7 @@
 ﻿// FFXIVAPP.Plugin.Widgets
-// English.cs
+// Russian.cs
 // 
 // Copyright © 2007 - 2015 Ryan Wilson - All Rights Reserved
-// Modified by Yaguar666 ak Yaguar Kuro
 // 
 // Redistribution and use in source and binary forms, with or without 
 // modification, are permitted provided that the following conditions are met: 
@@ -43,7 +42,7 @@ namespace FFXIVAPP.Plugin.Widgets.Localization
         {
             Dictionary.Clear();
             Dictionary.Add("widgets_", "*PH*");
-			Dictionary.Add("widgets_OpenNowButtonText", "Открыть Сейчас");
+            Dictionary.Add("widgets_OpenNowButtonText", "Открыть Сейчас");
             Dictionary.Add("widgets_ResetPositionButtonText", "Сбросить Настройки");
             Dictionary.Add("widgets_DPSTitleBar", "[УВС]");
             Dictionary.Add("widgets_HPSTitleBar", "[ЛВС]");
