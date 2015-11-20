@@ -45,7 +45,6 @@ namespace FFXIVAPP.Plugin.Widgets.Helpers
     {
         private static WinAPI.WinEventDelegate _delegate;
         private static IntPtr _mainHandleHook;
-
         private static WindowInteropHelper _enmityWidgetInteropHelper;
         private static WindowInteropHelper _currentTargetWidgetInteropHelper;
         private static WindowInteropHelper _focusTargetWidgetInteropHelper;

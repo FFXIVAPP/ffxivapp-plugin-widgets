@@ -38,21 +38,6 @@ namespace FFXIVAPP.Plugin.Widgets
 {
     public sealed class ShellViewModel : INotifyPropertyChanged
     {
-        #region Property Bindings
-
-        private static ShellViewModel _instance;
-
-        public static ShellViewModel Instance
-        {
-            get { return _instance ?? (_instance = new ShellViewModel()); }
-        }
-
-        #endregion
-
-        #region Declarations
-
-        #endregion
-
         public ShellViewModel()
         {
             Initializer.LoadSettings();
@@ -113,6 +98,21 @@ namespace FFXIVAPP.Plugin.Widgets
                     break;
             }
         }
+
+        #region Property Bindings
+
+        private static ShellViewModel _instance;
+
+        public static ShellViewModel Instance
+        {
+            get { return _instance ?? (_instance = new ShellViewModel()); }
+        }
+
+        #endregion
+
+        #region Declarations
+
+        #endregion
 
         #region Loading Functions
 

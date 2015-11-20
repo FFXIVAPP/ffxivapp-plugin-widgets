@@ -94,10 +94,6 @@ namespace FFXIVAPP.Plugin.Widgets.Windows
 
         #endregion
 
-        public FocusTargetWidgetViewModel()
-        {
-        }
-
         #region Loading Functions
 
         #endregion

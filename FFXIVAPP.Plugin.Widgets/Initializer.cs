@@ -37,10 +37,6 @@ namespace FFXIVAPP.Plugin.Widgets
 {
     internal static class Initializer
     {
-        #region Declarations
-
-        #endregion
-
         /// <summary>
         /// </summary>
         public static void LoadSettings()
@@ -73,5 +69,9 @@ namespace FFXIVAPP.Plugin.Widgets
         {
             WidgetTopMostHelper.HookWidgetTopMost();
         }
+
+        #region Declarations
+
+        #endregion
     }
 }

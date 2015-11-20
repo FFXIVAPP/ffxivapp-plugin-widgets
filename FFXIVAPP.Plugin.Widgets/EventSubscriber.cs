@@ -189,7 +189,7 @@ namespace FFXIVAPP.Plugin.Widgets
             {
                 EnmityWidgetViewModel.Instance.TargetEntity = targetEntity;
                 EnmityWidgetViewModel.Instance.EnmityTargetIsValid = true;
-                EnmityWidgetViewModel.Instance.EnmityTargetHPPercent = (double) targetEntity.CurrentTarget.HPPercent;
+                EnmityWidgetViewModel.Instance.EnmityTargetHPPercent = targetEntity.CurrentTarget.HPPercent;
                 try
                 {
                     EnmityWidgetViewModel.Instance.EnmityTargetDistance = XIVInfoViewModel.Instance.CurrentUser.GetDistanceTo(targetEntity.CurrentTarget);
@@ -203,7 +203,7 @@ namespace FFXIVAPP.Plugin.Widgets
             {
                 CurrentTargetWidgetViewModel.Instance.TargetEntity = targetEntity;
                 CurrentTargetWidgetViewModel.Instance.CurrentTargetIsValid = true;
-                CurrentTargetWidgetViewModel.Instance.CurrentTargetHPPercent = (double) targetEntity.CurrentTarget.HPPercent;
+                CurrentTargetWidgetViewModel.Instance.CurrentTargetHPPercent = targetEntity.CurrentTarget.HPPercent;
                 try
                 {
                     CurrentTargetWidgetViewModel.Instance.CurrentTargetDistance = XIVInfoViewModel.Instance.CurrentUser.GetDistanceTo(targetEntity.CurrentTarget);
@@ -217,7 +217,7 @@ namespace FFXIVAPP.Plugin.Widgets
             {
                 FocusTargetWidgetViewModel.Instance.TargetEntity = targetEntity;
                 FocusTargetWidgetViewModel.Instance.FocusTargetIsValid = true;
-                FocusTargetWidgetViewModel.Instance.FocusTargetHPPercent = (double) targetEntity.FocusTarget.HPPercent;
+                FocusTargetWidgetViewModel.Instance.FocusTargetHPPercent = targetEntity.FocusTarget.HPPercent;
                 try
                 {
                     FocusTargetWidgetViewModel.Instance.FocusTargetDistance = XIVInfoViewModel.Instance.CurrentUser.GetDistanceTo(targetEntity.FocusTarget);

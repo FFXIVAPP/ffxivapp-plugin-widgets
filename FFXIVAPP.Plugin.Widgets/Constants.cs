@@ -43,7 +43,7 @@ namespace FFXIVAPP.Plugin.Widgets
 
         public const string LibraryPack = "pack://application:,,,/FFXIVAPP.Plugin.Widgets;component/";
 
-        public static readonly string[] Supported = new[]
+        public static readonly string[] Supported =
         {
             "ja", "fr", "en", "de", "ru"
         };

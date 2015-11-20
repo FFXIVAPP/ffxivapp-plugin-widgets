@@ -38,6 +38,16 @@ namespace FFXIVAPP.Plugin.Widgets.ViewModels
 {
     internal sealed class MainViewModel : INotifyPropertyChanged
     {
+        public MainViewModel()
+        {
+            ResetEnmityWidgetCommand = new DelegateCommand(ResetEnmityWidget);
+            OpenEnmityWidgetCommand = new DelegateCommand(OpenEnmityWidget);
+            ResetFocusTargetWidgetCommand = new DelegateCommand(ResetFocusTargetWidget);
+            OpenFocusTargetWidgetCommand = new DelegateCommand(OpenFocusTargetWidget);
+            ResetCurrentTargetWidgetCommand = new DelegateCommand(ResetCurrentTargetWidget);
+            OpenCurrentTargetWidgetCommand = new DelegateCommand(OpenCurrentTargetWidget);
+        }
+
         #region Property Bindings
 
         private static MainViewModel _instance;
@@ -63,16 +73,6 @@ namespace FFXIVAPP.Plugin.Widgets.ViewModels
         #region Loading Functions
 
         #endregion
-
-        public MainViewModel()
-        {
-            ResetEnmityWidgetCommand = new DelegateCommand(ResetEnmityWidget);
-            OpenEnmityWidgetCommand = new DelegateCommand(OpenEnmityWidget);
-            ResetFocusTargetWidgetCommand = new DelegateCommand(ResetFocusTargetWidget);
-            OpenFocusTargetWidgetCommand = new DelegateCommand(OpenFocusTargetWidget);
-            ResetCurrentTargetWidgetCommand = new DelegateCommand(ResetCurrentTargetWidget);
-            OpenCurrentTargetWidgetCommand = new DelegateCommand(OpenCurrentTargetWidget);
-        }
 
         #region Utility Functions
 

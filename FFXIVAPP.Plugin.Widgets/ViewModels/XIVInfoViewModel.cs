@@ -39,6 +39,23 @@ namespace FFXIVAPP.Plugin.Widgets.ViewModels
 {
     public class XIVInfoViewModel : INotifyPropertyChanged
     {
+        public XIVInfoViewModel()
+        {
+            InfoTimer.Elapsed += InfoTimerOnElapsed;
+            //InfoTimer.Start();
+        }
+
+        private void InfoTimerOnElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
+        {
+            if (IsProcessing)
+            {
+                return;
+            }
+            IsProcessing = true;
+            // do stuff if you have too
+            IsProcessing = false;
+        }
+
         #region Property Bindings
 
         private static XIVInfoViewModel _instance;
@@ -117,23 +134,6 @@ namespace FFXIVAPP.Plugin.Widgets.ViewModels
         public bool IsProcessing { get; set; }
 
         #endregion
-
-        public XIVInfoViewModel()
-        {
-            InfoTimer.Elapsed += InfoTimerOnElapsed;
-            //InfoTimer.Start();
-        }
-
-        private void InfoTimerOnElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
-        {
-            if (IsProcessing)
-            {
-                return;
-            }
-            IsProcessing = true;
-            // do stuff if you have too
-            IsProcessing = false;
-        }
 
         #region Implementation of INotifyPropertyChanged
 

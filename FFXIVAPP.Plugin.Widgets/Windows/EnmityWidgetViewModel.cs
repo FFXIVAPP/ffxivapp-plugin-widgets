@@ -94,10 +94,6 @@ namespace FFXIVAPP.Plugin.Widgets.Windows
 
         #endregion
 
-        public EnmityWidgetViewModel()
-        {
-        }
-
         #region Loading Functions
 
         #endregion

@@ -49,10 +49,6 @@ namespace FFXIVAPP.Plugin.Widgets.ViewModels
 
         #endregion
 
-        public SettingsViewModel()
-        {
-        }
-
         #region Loading Functions
 
         #endregion
