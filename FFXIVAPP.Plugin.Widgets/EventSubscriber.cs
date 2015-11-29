@@ -28,8 +28,8 @@
 // POSSIBILITY OF SUCH DAMAGE. 
 
 using System;
-using FFXIVAPP.Common.Core.Memory;
 using FFXIVAPP.IPluginInterface.Events;
+using FFXIVAPP.Memory.Core;
 using FFXIVAPP.Plugin.Widgets.Properties;
 using FFXIVAPP.Plugin.Widgets.ViewModels;
 using FFXIVAPP.Plugin.Widgets.Windows;

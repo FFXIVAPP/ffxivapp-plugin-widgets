@@ -29,7 +29,7 @@
 
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using FFXIVAPP.Common.Core.Memory;
+using FFXIVAPP.Memory.Core;
 
 namespace FFXIVAPP.Plugin.Widgets.Windows
 {
