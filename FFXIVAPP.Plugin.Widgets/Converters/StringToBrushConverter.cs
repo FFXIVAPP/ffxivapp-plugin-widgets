@@ -1,6 +1,6 @@
 ﻿// FFXIVAPP.Plugin.Widgets ~ StringToBrushConverter.cs
 // 
-// Copyright © 2007 - 2016 Ryan Wilson - All Rights Reserved
+// Copyright © 2007 - 2017 Ryan Wilson - All Rights Reserved
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -19,7 +19,6 @@ using System;
 using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Media;
-using FFXIVAPP.Memory.Core.Enums;
 using FFXIVAPP.Plugin.Widgets.Properties;
 
 namespace FFXIVAPP.Plugin.Widgets.Converters
@@ -31,8 +30,8 @@ namespace FFXIVAPP.Plugin.Widgets.Converters
             var param = "DEFAULT";
             try
             {
-                param = ((Actor.Job) value).ToString()
-                                           .ToUpperInvariant();
+                param = value.ToString()
+                             .ToUpperInvariant();
             }
             catch (Exception ex)
             {
@@ -90,12 +89,9 @@ namespace FFXIVAPP.Plugin.Widgets.Converters
             {
                 switch (color.Length)
                 {
-                    case 8:
-                        return new SolidColorBrush(Color.FromArgb(Byte.Parse(color.Substring(0, 2), NumberStyles.HexNumber), Byte.Parse(color.Substring(2, 2), NumberStyles.HexNumber), Byte.Parse(color.Substring(4, 2), NumberStyles.HexNumber), Byte.Parse(color.Substring(6, 2), NumberStyles.HexNumber)));
-                    case 6:
-                        return new SolidColorBrush(Color.FromRgb(Byte.Parse(color.Substring(0, 2), NumberStyles.HexNumber), Byte.Parse(color.Substring(2, 2), NumberStyles.HexNumber), Byte.Parse(color.Substring(4, 2), NumberStyles.HexNumber)));
-                    default:
-                        return Brushes.Green;
+                    case 8: return new SolidColorBrush(Color.FromArgb(Byte.Parse(color.Substring(0, 2), NumberStyles.HexNumber), Byte.Parse(color.Substring(2, 2), NumberStyles.HexNumber), Byte.Parse(color.Substring(4, 2), NumberStyles.HexNumber), Byte.Parse(color.Substring(6, 2), NumberStyles.HexNumber)));
+                    case 6: return new SolidColorBrush(Color.FromRgb(Byte.Parse(color.Substring(0, 2), NumberStyles.HexNumber), Byte.Parse(color.Substring(2, 2), NumberStyles.HexNumber), Byte.Parse(color.Substring(4, 2), NumberStyles.HexNumber)));
+                    default: return Brushes.Green;
                 }
             }
             catch (Exception ex)
