@@ -74,11 +74,6 @@ namespace FFXIVAPP.Plugin.Widgets.ViewModels
             set
             {
                 _currentNPCs = value;
-                if (value.Any())
-                {
-                    CurrentUser = value.FirstOrDefault()
-                                       .Value.CurrentUser;
-                }
                 RaisePropertyChanged();
             }
         }
@@ -89,11 +84,6 @@ namespace FFXIVAPP.Plugin.Widgets.ViewModels
             set
             {
                 _currentMonsters = value;
-                if (value.Any())
-                {
-                    CurrentUser = value.FirstOrDefault()
-                                       .Value.CurrentUser;
-                }
                 RaisePropertyChanged();
             }
         }
@@ -104,11 +94,6 @@ namespace FFXIVAPP.Plugin.Widgets.ViewModels
             set
             {
                 _currentPCs = value;
-                if (value.Any())
-                {
-                    CurrentUser = value.FirstOrDefault()
-                                       .Value.CurrentUser;
-                }
                 RaisePropertyChanged();
             }
         }

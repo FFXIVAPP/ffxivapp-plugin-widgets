@@ -172,12 +172,19 @@ namespace FFXIVAPP.Plugin.Widgets
             CurrentTargetWidgetViewModel.Instance.CurrentTargetIsValid = false;
             CurrentTargetWidgetViewModel.Instance.CurrentTargetHPPercent = 0;
             CurrentTargetWidgetViewModel.Instance.CurrentTargetDistance = 0;
+
+            if (ActorEntity.CurrentUser != null)
+            {
+                XIVInfoViewModel.Instance.CurrentUser = ActorEntity.CurrentUser;
+            }
+
             // if valid assign actual current target info
             if (targetEntity.CurrentTarget != null && targetEntity.CurrentTarget.IsValid && Settings.Default.ShowEnmityWidgetOnLoad)
             {
                 EnmityWidgetViewModel.Instance.TargetEntity = targetEntity;
                 EnmityWidgetViewModel.Instance.EnmityTargetIsValid = true;
                 EnmityWidgetViewModel.Instance.EnmityTargetHPPercent = targetEntity.CurrentTarget.HPPercent;
+
                 try
                 {
                     EnmityWidgetViewModel.Instance.EnmityTargetDistance = XIVInfoViewModel.Instance.CurrentUser.GetDistanceTo(targetEntity.CurrentTarget);
@@ -192,6 +199,7 @@ namespace FFXIVAPP.Plugin.Widgets
                 CurrentTargetWidgetViewModel.Instance.TargetEntity = targetEntity;
                 CurrentTargetWidgetViewModel.Instance.CurrentTargetIsValid = true;
                 CurrentTargetWidgetViewModel.Instance.CurrentTargetHPPercent = targetEntity.CurrentTarget.HPPercent;
+                
                 try
                 {
                     CurrentTargetWidgetViewModel.Instance.CurrentTargetDistance = XIVInfoViewModel.Instance.CurrentUser.GetDistanceTo(targetEntity.CurrentTarget);
@@ -206,6 +214,7 @@ namespace FFXIVAPP.Plugin.Widgets
                 FocusTargetWidgetViewModel.Instance.TargetEntity = targetEntity;
                 FocusTargetWidgetViewModel.Instance.FocusTargetIsValid = true;
                 FocusTargetWidgetViewModel.Instance.FocusTargetHPPercent = targetEntity.FocusTarget.HPPercent;
+                
                 try
                 {
                     FocusTargetWidgetViewModel.Instance.FocusTargetDistance = XIVInfoViewModel.Instance.CurrentUser.GetDistanceTo(targetEntity.FocusTarget);
