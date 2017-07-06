@@ -97,7 +97,6 @@
     </Compile>
     <Compile Include="ShellViewModel.cs" />
     <Compile Include="Utilities\CommandBuilder.cs" />
-    <Compile Include="Utilities\LogPublisher.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />

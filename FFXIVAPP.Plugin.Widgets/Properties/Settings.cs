@@ -40,11 +40,17 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
 {
     internal class Settings : ApplicationSettingsBase, INotifyPropertyChanged
     {
+        #region Logger
+
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+
+        #endregion
+
         private static Settings _default;
 
         public static Settings Default
         {
-            get { return _default ?? (_default = ((Settings) (Synchronized(new Settings())))); }
+            get { return _default ?? (_default = (Settings) Synchronized(new Settings())); }
         }
 
         public override void Save()
@@ -154,7 +160,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
             }
             catch (Exception ex)
             {
-                Logging.Log(LogManager.GetCurrentClassLogger(), "", ex);
+                Logging.Log(Logger, new LogItem(ex, true));
             }
             RaisePropertyChanged(key);
         }
@@ -214,7 +220,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("#FF000000")]
         public Color ChatBackgroundColor
         {
-            get { return ((Color) (this["ChatBackgroundColor"])); }
+            get { return (Color) this["ChatBackgroundColor"]; }
             set
             {
                 this["ChatBackgroundColor"] = value;
@@ -227,7 +233,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("#FF800080")]
         public Color TimeStampColor
         {
-            get { return ((Color) (this["TimeStampColor"])); }
+            get { return (Color) this["TimeStampColor"]; }
             set
             {
                 this["TimeStampColor"] = value;
@@ -240,7 +246,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("Microsoft Sans Serif, 12pt")]
         public Font ChatFont
         {
-            get { return ((Font) (this["ChatFont"])); }
+            get { return (Font) this["ChatFont"]; }
             set
             {
                 this["ChatFont"] = value;
@@ -253,7 +259,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("100")]
         public Double Zoom
         {
-            get { return ((Double) (this["Zoom"])); }
+            get { return (Double) this["Zoom"]; }
             set
             {
                 this["Zoom"] = value;
@@ -266,7 +272,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("0.7")]
         public string WidgetOpacity
         {
-            get { return ((string) (this["WidgetOpacity"])); }
+            get { return (string) this["WidgetOpacity"]; }
             set
             {
                 this["WidgetOpacity"] = value;
@@ -276,8 +282,8 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
 
         [ApplicationScopedSetting]
         [DebuggerNonUserCode]
-        [DefaultSettingValue(@"<?xml version=""1.0"" encoding=""utf-16""?>
-<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+        [DefaultSettingValue(@"<?xml version=string.Empty1.0string.Empty encoding=string.Emptyutf-16string.Empty?>
+<ArrayOfString xmlns:xsi=string.Emptyhttp://www.w3.org/2001/XMLSchema-instancestring.Empty xmlns:xsd=string.Emptyhttp://www.w3.org/2001/XMLSchemastring.Empty>
   <string>0.5</string>
   <string>0.6</string>
   <string>0.7</string>
@@ -287,7 +293,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
 </ArrayOfString>")]
         public StringCollection WidgetOpacityList
         {
-            get { return ((StringCollection) (this["WidgetOpacityList"])); }
+            get { return (StringCollection) this["WidgetOpacityList"]; }
             set
             {
                 this["WidgetOpacityList"] = value;
@@ -300,7 +306,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("False")]
         public bool WidgetClickThroughEnabled
         {
-            get { return ((bool) (this["WidgetClickThroughEnabled"])); }
+            get { return (bool) this["WidgetClickThroughEnabled"]; }
             set
             {
                 this["WidgetClickThroughEnabled"] = value;
@@ -313,7 +319,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("True")]
         public bool ShowTitlesOnWidgets
         {
-            get { return ((bool) (this["ShowTitlesOnWidgets"])); }
+            get { return (bool) this["ShowTitlesOnWidgets"]; }
             set
             {
                 this["ShowTitlesOnWidgets"] = value;
@@ -326,7 +332,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("True")]
         public bool ShowJobNameInWidgets
         {
-            get { return ((bool) (this["ShowJobNameInWidgets"])); }
+            get { return (bool) this["ShowJobNameInWidgets"]; }
             set
             {
                 this["ShowJobNameInWidgets"] = value;
@@ -341,7 +347,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("FF00FF00")]
         public string DefaultProgressBarForeground
         {
-            get { return ((string) (this["DefaultProgressBarForeground"])); }
+            get { return (string) this["DefaultProgressBarForeground"]; }
             set
             {
                 this["DefaultProgressBarForeground"] = value;
@@ -354,7 +360,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("SkyBlue")]
         public string PLDProgressBarForeground
         {
-            get { return ((string) (this["PLDProgressBarForeground"])); }
+            get { return (string) this["PLDProgressBarForeground"]; }
             set
             {
                 this["PLDProgressBarForeground"] = value;
@@ -367,7 +373,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("DarkSlateBlue")]
         public string DRGProgressBarForeground
         {
-            get { return ((string) (this["DRGProgressBarForeground"])); }
+            get { return (string) this["DRGProgressBarForeground"]; }
             set
             {
                 this["DRGProgressBarForeground"] = value;
@@ -380,7 +386,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("Purple")]
         public string BLMProgressBarForeground
         {
-            get { return ((string) (this["BLMProgressBarForeground"])); }
+            get { return (string) this["BLMProgressBarForeground"]; }
             set
             {
                 this["BLMProgressBarForeground"] = value;
@@ -393,7 +399,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("Red")]
         public string WARProgressBarForeground
         {
-            get { return ((string) (this["WARProgressBarForeground"])); }
+            get { return (string) this["WARProgressBarForeground"]; }
             set
             {
                 this["WARProgressBarForeground"] = value;
@@ -406,7 +412,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("White")]
         public string WHMProgressBarForeground
         {
-            get { return ((string) (this["WHMProgressBarForeground"])); }
+            get { return (string) this["WHMProgressBarForeground"]; }
             set
             {
                 this["WHMProgressBarForeground"] = value;
@@ -419,7 +425,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("MediumPurple")]
         public string SCHProgressBarForeground
         {
-            get { return ((string) (this["SCHProgressBarForeground"])); }
+            get { return (string) this["SCHProgressBarForeground"]; }
             set
             {
                 this["SCHProgressBarForeground"] = value;
@@ -432,7 +438,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("GoldenRod")]
         public string MNKProgressBarForeground
         {
-            get { return ((string) (this["MNKProgressBarForeground"])); }
+            get { return (string) this["MNKProgressBarForeground"]; }
             set
             {
                 this["MNKProgressBarForeground"] = value;
@@ -445,7 +451,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("GreenYellow")]
         public string BRDProgressBarForeground
         {
-            get { return ((string) (this["BRDProgressBarForeground"])); }
+            get { return (string) this["BRDProgressBarForeground"]; }
             set
             {
                 this["BRDProgressBarForeground"] = value;
@@ -458,7 +464,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("LimeGreen")]
         public string SMNProgressBarForeground
         {
-            get { return ((string) (this["SMNProgressBarForeground"])); }
+            get { return (string) this["SMNProgressBarForeground"]; }
             set
             {
                 this["SMNProgressBarForeground"] = value;
@@ -475,7 +481,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("250")]
         public int EnmityWidgetWidth
         {
-            get { return ((int) (this["EnmityWidgetWidth"])); }
+            get { return (int) this["EnmityWidgetWidth"]; }
             set
             {
                 this["EnmityWidgetWidth"] = value;
@@ -488,7 +494,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("450")]
         public int EnmityWidgetHeight
         {
-            get { return ((int) (this["EnmityWidgetHeight"])); }
+            get { return (int) this["EnmityWidgetHeight"]; }
             set
             {
                 this["EnmityWidgetHeight"] = value;
@@ -501,7 +507,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("1.0")]
         public string EnmityWidgetUIScale
         {
-            get { return ((string) (this["EnmityWidgetUIScale"])); }
+            get { return (string) this["EnmityWidgetUIScale"]; }
             set
             {
                 this["EnmityWidgetUIScale"] = value;
@@ -511,8 +517,8 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
 
         [ApplicationScopedSetting]
         [DebuggerNonUserCode]
-        [DefaultSettingValue(@"<?xml version=""1.0"" encoding=""utf-16""?>
-<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+        [DefaultSettingValue(@"<?xml version=string.Empty1.0string.Empty encoding=string.Emptyutf-16string.Empty?>
+<ArrayOfString xmlns:xsi=string.Emptyhttp://www.w3.org/2001/XMLSchema-instancestring.Empty xmlns:xsd=string.Emptyhttp://www.w3.org/2001/XMLSchemastring.Empty>
   <string>0.8</string>
   <string>0.9</string>
   <string>1.0</string>
@@ -524,7 +530,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
 </ArrayOfString>")]
         public StringCollection EnmityWidgetUIScaleList
         {
-            get { return ((StringCollection) (this["EnmityWidgetUIScaleList"])); }
+            get { return (StringCollection) this["EnmityWidgetUIScaleList"]; }
         }
 
         [UserScopedSetting]
@@ -532,7 +538,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("True")]
         public bool ShowEnmityWidgetOnLoad
         {
-            get { return ((bool) (this["ShowEnmityWidgetOnLoad"])); }
+            get { return (bool) this["ShowEnmityWidgetOnLoad"]; }
             set
             {
                 this["ShowEnmityWidgetOnLoad"] = value;
@@ -545,7 +551,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("100")]
         public int EnmityWidgetTop
         {
-            get { return ((int) (this["EnmityWidgetTop"])); }
+            get { return (int) this["EnmityWidgetTop"]; }
             set
             {
                 this["EnmityWidgetTop"] = value;
@@ -558,7 +564,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("400")]
         public int EnmityWidgetLeft
         {
-            get { return ((int) (this["EnmityWidgetLeft"])); }
+            get { return (int) this["EnmityWidgetLeft"]; }
             set
             {
                 this["EnmityWidgetLeft"] = value;
@@ -571,7 +577,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("True")]
         public bool ShowEnmityWidgetCurrentTargetInfo
         {
-            get { return ((bool) (this["ShowEnmityWidgetCurrentTargetInfo"])); }
+            get { return (bool) this["ShowEnmityWidgetCurrentTargetInfo"]; }
             set
             {
                 this["ShowEnmityWidgetCurrentTargetInfo"] = value;
@@ -588,7 +594,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("250")]
         public int FocusTargetWidgetWidth
         {
-            get { return ((int) (this["FocusTargetWidgetWidth"])); }
+            get { return (int) this["FocusTargetWidgetWidth"]; }
             set
             {
                 this["FocusTargetWidgetWidth"] = value;
@@ -601,7 +607,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("450")]
         public int FocusTargetWidgetHeight
         {
-            get { return ((int) (this["FocusTargetWidgetHeight"])); }
+            get { return (int) this["FocusTargetWidgetHeight"]; }
             set
             {
                 this["FocusTargetWidgetHeight"] = value;
@@ -614,7 +620,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("1.0")]
         public string FocusTargetWidgetUIScale
         {
-            get { return ((string) (this["FocusTargetWidgetUIScale"])); }
+            get { return (string) this["FocusTargetWidgetUIScale"]; }
             set
             {
                 this["FocusTargetWidgetUIScale"] = value;
@@ -624,8 +630,8 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
 
         [ApplicationScopedSetting]
         [DebuggerNonUserCode]
-        [DefaultSettingValue(@"<?xml version=""1.0"" encoding=""utf-16""?>
-<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+        [DefaultSettingValue(@"<?xml version=string.Empty1.0string.Empty encoding=string.Emptyutf-16string.Empty?>
+<ArrayOfString xmlns:xsi=string.Emptyhttp://www.w3.org/2001/XMLSchema-instancestring.Empty xmlns:xsd=string.Emptyhttp://www.w3.org/2001/XMLSchemastring.Empty>
   <string>0.8</string>
   <string>0.9</string>
   <string>1.0</string>
@@ -637,7 +643,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
 </ArrayOfString>")]
         public StringCollection FocusTargetWidgetUIScaleList
         {
-            get { return ((StringCollection) (this["FocusTargetWidgetUIScaleList"])); }
+            get { return (StringCollection) this["FocusTargetWidgetUIScaleList"]; }
         }
 
         [UserScopedSetting]
@@ -645,7 +651,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("True")]
         public bool ShowFocusTargetWidgetOnLoad
         {
-            get { return ((bool) (this["ShowFocusTargetWidgetOnLoad"])); }
+            get { return (bool) this["ShowFocusTargetWidgetOnLoad"]; }
             set
             {
                 this["ShowFocusTargetWidgetOnLoad"] = value;
@@ -658,7 +664,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("200")]
         public int FocusTargetWidgetTop
         {
-            get { return ((int) (this["FocusTargetWidgetTop"])); }
+            get { return (int) this["FocusTargetWidgetTop"]; }
             set
             {
                 this["FocusTargetWidgetTop"] = value;
@@ -671,7 +677,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("400")]
         public int FocusTargetWidgetLeft
         {
-            get { return ((int) (this["FocusTargetWidgetLeft"])); }
+            get { return (int) this["FocusTargetWidgetLeft"]; }
             set
             {
                 this["FocusTargetWidgetLeft"] = value;
@@ -688,7 +694,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("250")]
         public int CurrentTargetWidgetWidth
         {
-            get { return ((int) (this["CurrentTargetWidgetWidth"])); }
+            get { return (int) this["CurrentTargetWidgetWidth"]; }
             set
             {
                 this["CurrentTargetWidgetWidth"] = value;
@@ -701,7 +707,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("450")]
         public int CurrentTargetWidgetHeight
         {
-            get { return ((int) (this["CurrentTargetWidgetHeight"])); }
+            get { return (int) this["CurrentTargetWidgetHeight"]; }
             set
             {
                 this["CurrentTargetWidgetHeight"] = value;
@@ -714,7 +720,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("1.0")]
         public string CurrentTargetWidgetUIScale
         {
-            get { return ((string) (this["CurrentTargetWidgetUIScale"])); }
+            get { return (string) this["CurrentTargetWidgetUIScale"]; }
             set
             {
                 this["CurrentTargetWidgetUIScale"] = value;
@@ -724,8 +730,8 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
 
         [ApplicationScopedSetting]
         [DebuggerNonUserCode]
-        [DefaultSettingValue(@"<?xml version=""1.0"" encoding=""utf-16""?>
-<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+        [DefaultSettingValue(@"<?xml version=string.Empty1.0string.Empty encoding=string.Emptyutf-16string.Empty?>
+<ArrayOfString xmlns:xsi=string.Emptyhttp://www.w3.org/2001/XMLSchema-instancestring.Empty xmlns:xsd=string.Emptyhttp://www.w3.org/2001/XMLSchemastring.Empty>
   <string>0.8</string>
   <string>0.9</string>
   <string>1.0</string>
@@ -737,7 +743,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
 </ArrayOfString>")]
         public StringCollection CurrentTargetWidgetUIScaleList
         {
-            get { return ((StringCollection) (this["CurrentTargetWidgetUIScaleList"])); }
+            get { return (StringCollection) this["CurrentTargetWidgetUIScaleList"]; }
         }
 
         [UserScopedSetting]
@@ -745,7 +751,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("True")]
         public bool ShowCurrentTargetWidgetOnLoad
         {
-            get { return ((bool) (this["ShowCurrentTargetWidgetOnLoad"])); }
+            get { return (bool) this["ShowCurrentTargetWidgetOnLoad"]; }
             set
             {
                 this["ShowCurrentTargetWidgetOnLoad"] = value;
@@ -758,7 +764,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("300")]
         public int CurrentTargetWidgetTop
         {
-            get { return ((int) (this["CurrentTargetWidgetTop"])); }
+            get { return (int) this["CurrentTargetWidgetTop"]; }
             set
             {
                 this["CurrentTargetWidgetTop"] = value;
@@ -771,7 +777,7 @@ namespace FFXIVAPP.Plugin.Widgets.Properties
         [DefaultSettingValue("400")]
         public int CurrentTargetWidgetLeft
         {
-            get { return ((int) (this["CurrentTargetWidgetLeft"])); }
+            get { return (int) this["CurrentTargetWidgetLeft"]; }
             set
             {
                 this["CurrentTargetWidgetLeft"] = value;

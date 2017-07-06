@@ -16,16 +16,25 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using FFXIVAPP.Common.Models;
+using FFXIVAPP.Common.Utilities;
 using FFXIVAPP.IPluginInterface.Events;
 using FFXIVAPP.Memory.Core;
 using FFXIVAPP.Plugin.Widgets.Properties;
 using FFXIVAPP.Plugin.Widgets.ViewModels;
 using FFXIVAPP.Plugin.Widgets.Windows;
+using NLog;
 
 namespace FFXIVAPP.Plugin.Widgets
 {
     public static class EventSubscriber
     {
+        #region Logger
+
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+
+        #endregion
+
         public static void Subscribe()
         {
             Plugin.PHost.NewConstantsEntity += OnNewConstantsEntity;
@@ -191,6 +200,7 @@ namespace FFXIVAPP.Plugin.Widgets
                 }
                 catch (Exception ex)
                 {
+                    Logging.Log(Logger, new LogItem(ex, true));
                 }
             }
             // if valid assign actual current target info
@@ -206,6 +216,7 @@ namespace FFXIVAPP.Plugin.Widgets
                 }
                 catch (Exception ex)
                 {
+                    Logging.Log(Logger, new LogItem(ex, true));
                 }
             }
             // if valid assign actual focus target info
@@ -221,6 +232,7 @@ namespace FFXIVAPP.Plugin.Widgets
                 }
                 catch (Exception ex)
                 {
+                    Logging.Log(Logger, new LogItem(ex, true));
                 }
             }
         }

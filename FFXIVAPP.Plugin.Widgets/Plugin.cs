@@ -24,6 +24,7 @@ using System.Windows;
 using System.Windows.Controls;
 using FFXIVAPP.Common.Events;
 using FFXIVAPP.Common.Helpers;
+using FFXIVAPP.Common.Models;
 using FFXIVAPP.Common.Utilities;
 using FFXIVAPP.IPluginInterface;
 using FFXIVAPP.Plugin.Widgets.Helpers;
@@ -35,7 +36,12 @@ namespace FFXIVAPP.Plugin.Widgets
     [Export(typeof(IPlugin))]
     public class Plugin : IPlugin, INotifyPropertyChanged
     {
-        private static bool entered = false;
+        #region Logger
+
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+
+        #endregion
+
         private IPluginHost _host;
         private Dictionary<string, string> _locale;
         private string _name;
@@ -79,7 +85,7 @@ namespace FFXIVAPP.Plugin.Widgets
                     }
                     catch (Exception ex)
                     {
-                        Logging.Log(LogManager.GetCurrentClassLogger(), "", ex);
+                        Logging.Log(Logger, new LogItem(ex, true));
                     }
                 }
                 PluginViewModel.Instance.Locale = _locale;
@@ -111,7 +117,7 @@ namespace FFXIVAPP.Plugin.Widgets
             Description = AssemblyHelper.Description;
             Copyright = AssemblyHelper.Copyright;
             Version = AssemblyHelper.Version.ToString();
-            Notice = "";
+            Notice = string.Empty;
         }
 
         public void Dispose(bool isUpdating = false)

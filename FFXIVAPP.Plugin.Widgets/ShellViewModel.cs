@@ -54,7 +54,7 @@ namespace FFXIVAPP.Plugin.Widgets
                         Settings.Default.CurrentTargetWidgetWidth = (int) (250 * Double.Parse(Settings.Default.CurrentTargetWidgetUIScale));
                         Settings.Default.CurrentTargetWidgetHeight = (int) (450 * Double.Parse(Settings.Default.CurrentTargetWidgetUIScale));
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         Settings.Default.CurrentTargetWidgetWidth = 250;
                         Settings.Default.CurrentTargetWidgetHeight = 450;
@@ -66,7 +66,7 @@ namespace FFXIVAPP.Plugin.Widgets
                         Settings.Default.FocusTargetWidgetWidth = (int) (250 * Double.Parse(Settings.Default.FocusTargetWidgetUIScale));
                         Settings.Default.FocusTargetWidgetHeight = (int) (450 * Double.Parse(Settings.Default.FocusTargetWidgetUIScale));
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         Settings.Default.FocusTargetWidgetWidth = 250;
                         Settings.Default.FocusTargetWidgetHeight = 450;
@@ -78,7 +78,7 @@ namespace FFXIVAPP.Plugin.Widgets
                         Settings.Default.EnmityWidgetWidth = (int) (250 * Double.Parse(Settings.Default.EnmityWidgetUIScale));
                         Settings.Default.EnmityWidgetHeight = (int) (450 * Double.Parse(Settings.Default.EnmityWidgetUIScale));
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         Settings.Default.EnmityWidgetWidth = 250;
                         Settings.Default.EnmityWidgetHeight = 450;
