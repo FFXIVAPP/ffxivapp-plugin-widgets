@@ -17,7 +17,7 @@
 
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using FFXIVAPP.Memory.Core;
+using Sharlayan.Core;
 
 namespace FFXIVAPP.Plugin.Widgets.Windows
 {

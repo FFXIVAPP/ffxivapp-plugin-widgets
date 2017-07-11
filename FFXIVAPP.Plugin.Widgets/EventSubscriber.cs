@@ -19,11 +19,11 @@ using System;
 using FFXIVAPP.Common.Models;
 using FFXIVAPP.Common.Utilities;
 using FFXIVAPP.IPluginInterface.Events;
-using FFXIVAPP.Memory.Core;
 using FFXIVAPP.Plugin.Widgets.Properties;
 using FFXIVAPP.Plugin.Widgets.ViewModels;
 using FFXIVAPP.Plugin.Widgets.Windows;
 using NLog;
+using Sharlayan.Core;
 
 namespace FFXIVAPP.Plugin.Widgets
 {
