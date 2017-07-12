@@ -15,6 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Sharlayan.Core;
@@ -25,7 +26,7 @@ namespace FFXIVAPP.Plugin.Widgets.Windows
     {
         #region Property Bindings
 
-        private static EnmityWidgetViewModel _instance;
+        private static Lazy<EnmityWidgetViewModel> _instance = new Lazy<EnmityWidgetViewModel>(() => new EnmityWidgetViewModel());
         private float _enmityTargetDistance;
         private double _enmityTargetHPPercent;
         private bool _enmityTargetIsValid;
@@ -33,7 +34,7 @@ namespace FFXIVAPP.Plugin.Widgets.Windows
 
         public static EnmityWidgetViewModel Instance
         {
-            get { return _instance ?? (_instance = new EnmityWidgetViewModel()); }
+            get { return _instance.Value; }
         }
 
         public TargetEntity TargetEntity

@@ -15,6 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Sharlayan.Core;
@@ -25,7 +26,7 @@ namespace FFXIVAPP.Plugin.Widgets.Windows
     {
         #region Property Bindings
 
-        private static CurrentTargetWidgetViewModel _instance;
+        private static Lazy<CurrentTargetWidgetViewModel> _instance = new Lazy<CurrentTargetWidgetViewModel>(() => new CurrentTargetWidgetViewModel());
         private float _currentTargetDistance;
         private double _currentTargetHPPercent;
         private bool _currentTargetIsValid;
@@ -33,7 +34,7 @@ namespace FFXIVAPP.Plugin.Widgets.Windows
 
         public static CurrentTargetWidgetViewModel Instance
         {
-            get { return _instance ?? (_instance = new CurrentTargetWidgetViewModel()); }
+            get { return _instance.Value; }
         }
 
         public TargetEntity TargetEntity

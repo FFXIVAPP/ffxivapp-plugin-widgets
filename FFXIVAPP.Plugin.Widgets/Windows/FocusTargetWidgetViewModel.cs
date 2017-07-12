@@ -15,6 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Sharlayan.Core;
@@ -25,7 +26,7 @@ namespace FFXIVAPP.Plugin.Widgets.Windows
     {
         #region Property Bindings
 
-        private static FocusTargetWidgetViewModel _instance;
+        private static Lazy<FocusTargetWidgetViewModel> _instance = new Lazy<FocusTargetWidgetViewModel>(() => new FocusTargetWidgetViewModel());
         private float _focusTargetDistance;
         private double _focusTargetHPPercent;
         private bool _focusTargetIsValid;
@@ -33,7 +34,7 @@ namespace FFXIVAPP.Plugin.Widgets.Windows
 
         public static FocusTargetWidgetViewModel Instance
         {
-            get { return _instance ?? (_instance = new FocusTargetWidgetViewModel()); }
+            get { return _instance.Value; }
         }
 
         public TargetEntity TargetEntity
