@@ -39,7 +39,7 @@ namespace FFXIVAPP.Plugin.Widgets.Converters
             var param = "DEFAULT";
             try
             {
-                param = value.ToString()
+                param = value?.ToString()
                              .ToUpperInvariant();
             }
             catch (Exception ex)

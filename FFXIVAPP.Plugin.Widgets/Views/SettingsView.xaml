@@ -12,162 +12,122 @@
              mc:Ignorable="d">
 
     <UserControl.Resources>
-        <x:Static x:Key="SettingsViewModel"
-                  Member="ViewModels:SettingsViewModel.Instance" />
-        <x:Static x:Key="PluginViewModel"
-                  Member="Plugin:PluginViewModel.Instance" />
-        <x:Static x:Key="Settings"
-                  Member="Properties:Settings.Default" />
+        <x:Static x:Key="SettingsViewModel" Member="ViewModels:SettingsViewModel.Instance" />
+        <x:Static x:Key="PluginViewModel" Member="Plugin:PluginViewModel.Instance" />
+        <x:Static x:Key="Settings" Member="Properties:Settings.Default" />
     </UserControl.Resources>
 
-    <Grid x:Name="LayoutRoot"
-          DataContext="{StaticResource SettingsViewModel}">
+    <Grid x:Name="LayoutRoot" DataContext="{StaticResource SettingsViewModel}">
         <TabControl x:Name="SettingsTC">
-            <TabItem Header="{Binding Locale[app_MainSettingsTabHeader],
-                                      Source={StaticResource PluginViewModel}}">
+            <TabItem Header="{Binding Locale[app_MainSettingsTabHeader], Source={StaticResource PluginViewModel}}">
                 <ScrollViewer>
                     <StackPanel>
-                        <GroupBox Header="{Binding Locale[widgets_EnableClickThroughHeader],
-                                                   Source={StaticResource PluginViewModel}}">
+                        <GroupBox Header="{Binding Locale[widgets_EnableClickThroughHeader], Source={StaticResource PluginViewModel}}">
                             <StackPanel>
-                                <controls:ToggleSwitch IsChecked="{Binding WidgetClickThroughEnabled,
-                                                                           Source={StaticResource Settings}}" />
+                                <controls:ToggleSwitch IsChecked="{Binding WidgetClickThroughEnabled, Source={StaticResource Settings}}" />
                             </StackPanel>
                         </GroupBox>
-                        <GroupBox Header="{Binding Locale[widgets_ShowTitlesOnWidgetsHeader],
-                                                   Source={StaticResource PluginViewModel}}">
+                        <GroupBox Header="{Binding Locale[widgets_ShowTitlesOnWidgetsHeader], Source={StaticResource PluginViewModel}}">
                             <StackPanel>
-                                <controls:ToggleSwitch IsChecked="{Binding ShowTitlesOnWidgets,
-                                                                           Source={StaticResource Settings}}" />
+                                <controls:ToggleSwitch IsChecked="{Binding ShowTitlesOnWidgets, Source={StaticResource Settings}}" />
                             </StackPanel>
                         </GroupBox>
-                        <GroupBox Header="{Binding Locale[widgets_WidgetOpacityHeader],
-                                                   Source={StaticResource PluginViewModel}}">
+                        <GroupBox Header="{Binding Locale[widgets_WidgetOpacityHeader], Source={StaticResource PluginViewModel}}">
                             <StackPanel>
                                 <ComboBox Margin="5"
                                           IsReadOnly="False"
-                                          ItemsSource="{Binding WidgetOpacityList,
-                                                                Source={StaticResource Settings}}"
-                                          SelectedValue="{Binding WidgetOpacity,
-                                                                  Source={StaticResource Settings}}" />
+                                          ItemsSource="{Binding WidgetOpacityList, Source={StaticResource Settings}}"
+                                          SelectedValue="{Binding WidgetOpacity, Source={StaticResource Settings}}" />
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
-            <TabItem Header="{Binding Locale[widgets_ColorsTabHeader],
-                                      Source={StaticResource PluginViewModel}}">
+            <TabItem Header="{Binding Locale[widgets_ColorsTabHeader], Source={StaticResource PluginViewModel}}">
                 <ScrollViewer>
                     <StackPanel>
-                        <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Locale[widgets_AboutColorsParsingLabel],
-                                                   Source={StaticResource PluginViewModel}}" />
-                        <GroupBox Header="{Binding Locale[widgets_DefaultProgressBarForegroundHeader],
-                                                   Source={StaticResource PluginViewModel}}">
-                            <TextBox Text="{Binding DefaultProgressBarForeground,
-                                                    Source={StaticResource Settings}}" />
+                        <TextBlock Text="{Binding Locale[widgets_AboutColorsParsingLabel], Source={StaticResource PluginViewModel}}" TextWrapping="WrapWithOverflow" />
+                        <GroupBox Header="{Binding Locale[widgets_DefaultProgressBarForegroundHeader], Source={StaticResource PluginViewModel}}">
+                            <TextBox Text="{Binding DefaultProgressBarForeground, Source={StaticResource Settings}}" />
                         </GroupBox>
-                        <Expander Header="{Binding Locale[widgets_ColorsJobsLabel],
-                                                   Source={StaticResource PluginViewModel}}">
+                        <Expander Margin="5,0"
+                                  Padding="0"
+                                  Header="{Binding Locale[widgets_ColorsJobsLabel], Source={StaticResource PluginViewModel}}">
                             <StackPanel>
                                 <GroupBox Header="PLD">
-                                    <TextBox Text="{Binding PLDProgressBarForeground,
-                                                            Source={StaticResource Settings}}" />
+                                    <TextBox Text="{Binding PLDProgressBarForeground, Source={StaticResource Settings}}" />
                                 </GroupBox>
                                 <GroupBox Header="DRG">
-                                    <TextBox Text="{Binding DRGProgressBarForeground,
-                                                            Source={StaticResource Settings}}" />
+                                    <TextBox Text="{Binding DRGProgressBarForeground, Source={StaticResource Settings}}" />
                                 </GroupBox>
                                 <GroupBox Header="BLM">
-                                    <TextBox Text="{Binding BLMProgressBarForeground,
-                                                            Source={StaticResource Settings}}" />
+                                    <TextBox Text="{Binding BLMProgressBarForeground, Source={StaticResource Settings}}" />
                                 </GroupBox>
                                 <GroupBox Header="WAR">
-                                    <TextBox Text="{Binding WARProgressBarForeground,
-                                                            Source={StaticResource Settings}}" />
+                                    <TextBox Text="{Binding WARProgressBarForeground, Source={StaticResource Settings}}" />
                                 </GroupBox>
                                 <GroupBox Header="WHM">
-                                    <TextBox Text="{Binding WHMProgressBarForeground,
-                                                            Source={StaticResource Settings}}" />
+                                    <TextBox Text="{Binding WHMProgressBarForeground, Source={StaticResource Settings}}" />
                                 </GroupBox>
                                 <GroupBox Header="SCH">
-                                    <TextBox Text="{Binding SCHProgressBarForeground,
-                                                            Source={StaticResource Settings}}" />
+                                    <TextBox Text="{Binding SCHProgressBarForeground, Source={StaticResource Settings}}" />
                                 </GroupBox>
                                 <GroupBox Header="MNK">
-                                    <TextBox Text="{Binding MNKProgressBarForeground,
-                                                            Source={StaticResource Settings}}" />
+                                    <TextBox Text="{Binding MNKProgressBarForeground, Source={StaticResource Settings}}" />
                                 </GroupBox>
                                 <GroupBox Header="BRD">
-                                    <TextBox Text="{Binding BRDProgressBarForeground,
-                                                            Source={StaticResource Settings}}" />
+                                    <TextBox Text="{Binding BRDProgressBarForeground, Source={StaticResource Settings}}" />
                                 </GroupBox>
                                 <GroupBox Header="SMN">
-                                    <TextBox Text="{Binding SMNProgressBarForeground,
-                                                            Source={StaticResource Settings}}" />
+                                    <TextBox Text="{Binding SMNProgressBarForeground, Source={StaticResource Settings}}" />
                                 </GroupBox>
                             </StackPanel>
                         </Expander>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
-            <TabItem x:Name="SettingsWidgetsTI"
-                     Header="{Binding Locale[widgets_WidgetSettingsTabHeader],
-                                      Source={StaticResource PluginViewModel}}">
+            <TabItem x:Name="SettingsWidgetsTI" Header="{Binding Locale[widgets_WidgetSettingsTabHeader], Source={StaticResource PluginViewModel}}">
                 <ScrollViewer>
                     <StackPanel>
-                        <Expander Header="{Binding Locale[widgets_EnmityWidgetSettingsTabLabel],
-                                                           Source={StaticResource PluginViewModel}}">
+                        <Expander Header="{Binding Locale[widgets_EnmityWidgetSettingsTabLabel], Source={StaticResource PluginViewModel}}">
                             <StackPanel>
-                                <GroupBox Header="{Binding Locale[widgets_UIScaleHeader],
-                                                           Source={StaticResource PluginViewModel}}">
+                                <GroupBox Header="{Binding Locale[widgets_UIScaleHeader], Source={StaticResource PluginViewModel}}">
                                     <StackPanel>
                                         <ComboBox Margin="5"
                                                   IsReadOnly="False"
-                                                  ItemsSource="{Binding EnmityWidgetUIScaleList,
-                                                                        Source={StaticResource Settings}}"
-                                                  SelectedValue="{Binding EnmityWidgetUIScale,
-                                                                          Source={StaticResource Settings}}" />
+                                                  ItemsSource="{Binding EnmityWidgetUIScaleList, Source={StaticResource Settings}}"
+                                                  SelectedValue="{Binding EnmityWidgetUIScale, Source={StaticResource Settings}}" />
                                     </StackPanel>
                                 </GroupBox>
-                                <GroupBox Header="{Binding Locale[widgets_EnmityShowCurrentTargetInfoHeader],
-                                                           Source={StaticResource PluginViewModel}}">
+                                <GroupBox Header="{Binding Locale[widgets_EnmityShowCurrentTargetInfoHeader], Source={StaticResource PluginViewModel}}">
                                     <StackPanel>
-                                        <controls:ToggleSwitch IsChecked="{Binding ShowEnmityWidgetCurrentTargetInfo,
-                                                                                   Source={StaticResource Settings}}" />
+                                        <controls:ToggleSwitch IsChecked="{Binding ShowEnmityWidgetCurrentTargetInfo, Source={StaticResource Settings}}" />
                                     </StackPanel>
                                 </GroupBox>
                             </StackPanel>
                         </Expander>
-                        <Expander Header="{Binding Locale[widgets_FocusTargetWidgetSettingsTabLabel],
-                                                               Source={StaticResource PluginViewModel}}">
+                        <Expander Header="{Binding Locale[widgets_FocusTargetWidgetSettingsTabLabel], Source={StaticResource PluginViewModel}}">
                             <StackPanel>
                                 <StackPanel>
-                                    <GroupBox Header="{Binding Locale[widgets_UIScaleHeader],
-                                                               Source={StaticResource PluginViewModel}}">
+                                    <GroupBox Header="{Binding Locale[widgets_UIScaleHeader], Source={StaticResource PluginViewModel}}">
                                         <StackPanel>
                                             <ComboBox Margin="5"
                                                       IsReadOnly="False"
-                                                      ItemsSource="{Binding FocusTargetWidgetUIScaleList,
-                                                                            Source={StaticResource Settings}}"
-                                                      SelectedValue="{Binding FocusTargetWidgetUIScale,
-                                                                              Source={StaticResource Settings}}" />
+                                                      ItemsSource="{Binding FocusTargetWidgetUIScaleList, Source={StaticResource Settings}}"
+                                                      SelectedValue="{Binding FocusTargetWidgetUIScale, Source={StaticResource Settings}}" />
                                         </StackPanel>
                                     </GroupBox>
                                 </StackPanel>
                             </StackPanel>
                         </Expander>
-                        <Expander Header="{Binding Locale[widgets_CurrentTargetWidgetSettingsTabLabel],
-                                                           Source={StaticResource PluginViewModel}}">
+                        <Expander Header="{Binding Locale[widgets_CurrentTargetWidgetSettingsTabLabel], Source={StaticResource PluginViewModel}}">
                             <StackPanel>
-                                <GroupBox Header="{Binding Locale[widgets_UIScaleHeader],
-                                                           Source={StaticResource PluginViewModel}}">
+                                <GroupBox Header="{Binding Locale[widgets_UIScaleHeader], Source={StaticResource PluginViewModel}}">
                                     <StackPanel>
                                         <ComboBox Margin="5"
                                                   IsReadOnly="False"
-                                                  ItemsSource="{Binding CurrentTargetWidgetUIScaleList,
-                                                                        Source={StaticResource Settings}}"
-                                                  SelectedValue="{Binding CurrentTargetWidgetUIScale,
-                                                                          Source={StaticResource Settings}}" />
+                                                  ItemsSource="{Binding CurrentTargetWidgetUIScaleList, Source={StaticResource Settings}}"
+                                                  SelectedValue="{Binding CurrentTargetWidgetUIScale, Source={StaticResource Settings}}" />
                                     </StackPanel>
                                 </GroupBox>
                             </StackPanel>
