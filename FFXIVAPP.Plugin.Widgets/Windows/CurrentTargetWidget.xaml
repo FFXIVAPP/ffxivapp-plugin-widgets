@@ -45,16 +45,18 @@
             <x:Static x:Key="CurrentTargetWidgetViewModel"
                       Member="ViewModels:CurrentTargetWidgetViewModel.Instance" />
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/FFXIVAPP.Plugin.Widgets;component/Resources/WidgetStyle.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/FFXIVAPP.Plugin.Widgets;component/Resources/WidgetStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
 
     <Grid x:Name="LayoutRoot">
         <Grid.LayoutTransform>
-            <ScaleTransform ScaleX="{Binding CurrentTargetWidgetUIScale,
+            <ScaleTransform
+                ScaleX="{Binding CurrentTargetWidgetUIScale,
                                              Source={StaticResource Settings}}"
-                            ScaleY="{Binding CurrentTargetWidgetUIScale,
+                ScaleY="{Binding CurrentTargetWidgetUIScale,
                                              Source={StaticResource Settings}}" />
         </Grid.LayoutTransform>
         <StackPanel>

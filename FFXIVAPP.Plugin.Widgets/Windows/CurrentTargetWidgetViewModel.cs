@@ -1,109 +1,85 @@
-﻿// FFXIVAPP.Plugin.Widgets ~ CurrentTargetWidgetViewModel.cs
-// 
-// Copyright © 2007 - 2017 Ryan Wilson - All Rights Reserved
-// 
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-// 
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-// 
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="CurrentTargetWidgetViewModel.cs" company="SyndicatedLife">
+//   Copyright(c) 2018 Ryan Wilson &amp;lt;syndicated.life@gmail.com&amp;gt; (http://syndicated.life/)
+//   Licensed under the MIT license. See LICENSE.md in the solution root for full license information.
+// </copyright>
+// <summary>
+//   CurrentTargetWidgetViewModel.cs Implementation
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using Sharlayan.Core;
+namespace FFXIVAPP.Plugin.Widgets.Windows {
+    using System;
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
 
-namespace FFXIVAPP.Plugin.Widgets.Windows
-{
-    internal sealed class CurrentTargetWidgetViewModel : INotifyPropertyChanged
-    {
-        #region Property Bindings
+    using Sharlayan.Core;
 
+    internal sealed class CurrentTargetWidgetViewModel : INotifyPropertyChanged {
         private static Lazy<CurrentTargetWidgetViewModel> _instance = new Lazy<CurrentTargetWidgetViewModel>(() => new CurrentTargetWidgetViewModel());
+
         private float _currentTargetDistance;
+
         private double _currentTargetHPPercent;
+
         private bool _currentTargetIsValid;
-        private TargetEntity _targetEntity;
 
-        public static CurrentTargetWidgetViewModel Instance
-        {
-            get { return _instance.Value; }
-        }
-
-        public TargetEntity TargetEntity
-        {
-            get { return _targetEntity ?? (_targetEntity = new TargetEntity()); }
-            set
-            {
-                _targetEntity = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        public bool CurrentTargetIsValid
-        {
-            get { return _currentTargetIsValid; }
-            set
-            {
-                _currentTargetIsValid = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        public double CurrentTargetHPPercent
-        {
-            get { return _currentTargetHPPercent; }
-            set
-            {
-                _currentTargetHPPercent = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        public float CurrentTargetDistance
-        {
-            get { return _currentTargetDistance; }
-            set
-            {
-                _currentTargetDistance = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        #endregion
-
-        #region Declarations
-
-        #endregion
-
-        #region Loading Functions
-
-        #endregion
-
-        #region Utility Functions
-
-        #endregion
-
-        #region Command Bindings
-
-        #endregion
-
-        #region Implementation of INotifyPropertyChanged
+        private TargetInfo _targetEntity;
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
-        private void RaisePropertyChanged([CallerMemberName] string caller = "")
-        {
-            PropertyChanged(this, new PropertyChangedEventArgs(caller));
+        public static CurrentTargetWidgetViewModel Instance {
+            get {
+                return _instance.Value;
+            }
         }
 
-        #endregion
+        public float CurrentTargetDistance {
+            get {
+                return this._currentTargetDistance;
+            }
+
+            set {
+                this._currentTargetDistance = value;
+                this.RaisePropertyChanged();
+            }
+        }
+
+        public double CurrentTargetHPPercent {
+            get {
+                return this._currentTargetHPPercent;
+            }
+
+            set {
+                this._currentTargetHPPercent = value;
+                this.RaisePropertyChanged();
+            }
+        }
+
+        public bool CurrentTargetIsValid {
+            get {
+                return this._currentTargetIsValid;
+            }
+
+            set {
+                this._currentTargetIsValid = value;
+                this.RaisePropertyChanged();
+            }
+        }
+
+        public TargetInfo TargetEntity {
+            get {
+                return this._targetEntity ?? (this._targetEntity = new TargetInfo());
+            }
+
+            set {
+                this._targetEntity = value;
+                this.RaisePropertyChanged();
+            }
+        }
+
+        private void RaisePropertyChanged([CallerMemberName] string caller = "") {
+            this.PropertyChanged(this, new PropertyChangedEventArgs(caller));
+        }
     }
 }
