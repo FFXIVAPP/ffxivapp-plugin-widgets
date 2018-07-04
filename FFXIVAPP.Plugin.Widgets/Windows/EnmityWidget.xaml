@@ -46,16 +46,18 @@
             <x:Static x:Key="Settings"
                       Member="PluginProperties:Settings.Default" />
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/FFXIVAPP.Plugin.Widgets;component/Resources/WidgetStyle.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/FFXIVAPP.Plugin.Widgets;component/Resources/WidgetStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
 
     <Grid x:Name="LayoutRoot">
         <Grid.LayoutTransform>
-            <ScaleTransform ScaleX="{Binding EnmityWidgetUIScale,
+            <ScaleTransform
+                ScaleX="{Binding EnmityWidgetUIScale,
                                              Source={StaticResource Settings}}"
-                            ScaleY="{Binding EnmityWidgetUIScale,
+                ScaleY="{Binding EnmityWidgetUIScale,
                                              Source={StaticResource Settings}}" />
         </Grid.LayoutTransform>
         <StackPanel>
@@ -113,7 +115,8 @@
                         Visibility="{Binding ShowEnmityWidgetCurrentTargetInfo,
                                              Source={StaticResource Settings},
                                              Converter={StaticResource VisibilityConverter}}">
-                <Grid Visibility="{Binding EnmityTargetIsValid,
+                <Grid
+                    Visibility="{Binding EnmityTargetIsValid,
                                            Source={StaticResource EnmityWidgetViewModel},
                                            Converter={StaticResource VisibilityConverter}}">
                     <Grid.RowDefinitions>

@@ -1,93 +1,80 @@
-﻿// FFXIVAPP.Plugin.Widgets ~ Widgets.cs
-// 
-// Copyright © 2007 - 2017 Ryan Wilson - All Rights Reserved
-// 
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-// 
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-// 
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Widgets.cs" company="SyndicatedLife">
+//   Copyright(c) 2018 Ryan Wilson &amp;lt;syndicated.life@gmail.com&amp;gt; (http://syndicated.life/)
+//   Licensed under the MIT license. See LICENSE.md in the solution root for full license information.
+// </copyright>
+// <summary>
+//   Widgets.cs Implementation
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using FFXIVAPP.Common.Models;
-using FFXIVAPP.Common.Utilities;
-using FFXIVAPP.Plugin.Widgets.Windows;
-using NLog;
+namespace FFXIVAPP.Plugin.Widgets {
+    using System;
 
-namespace FFXIVAPP.Plugin.Widgets
-{
-    public class Widgets
-    {
-        #region Logger
+    using FFXIVAPP.Common.Models;
+    using FFXIVAPP.Common.Utilities;
+    using FFXIVAPP.Plugin.Widgets.Windows;
 
+    using NLog;
+
+    public class Widgets {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
-        #endregion
-
         private static Lazy<Widgets> _instance = new Lazy<Widgets>(() => new Widgets());
+
         private CurrentTargetWidget _currentTargetWidget;
+
         private EnmityWidget _enmityWidget;
+
         private FocusTargetWidget _focusTargetWidget;
 
-        public static Widgets Instance
-        {
-            get { return _instance.Value; }
-        }
-
-        public EnmityWidget EnmityWidget
-        {
-            get { return _enmityWidget ?? (_enmityWidget = new EnmityWidget()); }
-        }
-
-        public FocusTargetWidget FocusTargetWidget
-        {
-            get { return _focusTargetWidget ?? (_focusTargetWidget = new FocusTargetWidget()); }
-        }
-
-        public CurrentTargetWidget CurrentTargetWidget
-        {
-            get { return _currentTargetWidget ?? (_currentTargetWidget = new CurrentTargetWidget()); }
-        }
-
-        public void ShowEnmityWidget()
-        {
-            try
-            {
-                EnmityWidget.Show();
+        public static Widgets Instance {
+            get {
+                return _instance.Value;
             }
-            catch (Exception ex)
-            {
+        }
+
+        public CurrentTargetWidget CurrentTargetWidget {
+            get {
+                return this._currentTargetWidget ?? (this._currentTargetWidget = new CurrentTargetWidget());
+            }
+        }
+
+        public EnmityWidget EnmityWidget {
+            get {
+                return this._enmityWidget ?? (this._enmityWidget = new EnmityWidget());
+            }
+        }
+
+        public FocusTargetWidget FocusTargetWidget {
+            get {
+                return this._focusTargetWidget ?? (this._focusTargetWidget = new FocusTargetWidget());
+            }
+        }
+
+        public void ShowCurrentTargetWidget() {
+            try {
+                this.CurrentTargetWidget.Show();
+            }
+            catch (Exception ex) {
                 Logging.Log(Logger, new LogItem(ex, true));
             }
         }
 
-        public void ShowFocusTargetWidget()
-        {
-            try
-            {
-                FocusTargetWidget.Show();
+        public void ShowEnmityWidget() {
+            try {
+                this.EnmityWidget.Show();
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 Logging.Log(Logger, new LogItem(ex, true));
             }
         }
 
-        public void ShowCurrentTargetWidget()
-        {
-            try
-            {
-                CurrentTargetWidget.Show();
+        public void ShowFocusTargetWidget() {
+            try {
+                this.FocusTargetWidget.Show();
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 Logging.Log(Logger, new LogItem(ex, true));
             }
         }

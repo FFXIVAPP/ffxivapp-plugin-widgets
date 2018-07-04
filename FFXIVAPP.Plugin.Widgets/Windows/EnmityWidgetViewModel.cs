@@ -1,109 +1,85 @@
-﻿// FFXIVAPP.Plugin.Widgets ~ EnmityWidgetViewModel.cs
-// 
-// Copyright © 2007 - 2017 Ryan Wilson - All Rights Reserved
-// 
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-// 
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-// 
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="EnmityWidgetViewModel.cs" company="SyndicatedLife">
+//   Copyright(c) 2018 Ryan Wilson &amp;lt;syndicated.life@gmail.com&amp;gt; (http://syndicated.life/)
+//   Licensed under the MIT license. See LICENSE.md in the solution root for full license information.
+// </copyright>
+// <summary>
+//   EnmityWidgetViewModel.cs Implementation
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using Sharlayan.Core;
+namespace FFXIVAPP.Plugin.Widgets.Windows {
+    using System;
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
 
-namespace FFXIVAPP.Plugin.Widgets.Windows
-{
-    internal sealed class EnmityWidgetViewModel : INotifyPropertyChanged
-    {
-        #region Property Bindings
+    using Sharlayan.Core;
 
+    internal sealed class EnmityWidgetViewModel : INotifyPropertyChanged {
         private static Lazy<EnmityWidgetViewModel> _instance = new Lazy<EnmityWidgetViewModel>(() => new EnmityWidgetViewModel());
+
         private float _enmityTargetDistance;
+
         private double _enmityTargetHPPercent;
+
         private bool _enmityTargetIsValid;
-        private TargetEntity _targetEntity;
 
-        public static EnmityWidgetViewModel Instance
-        {
-            get { return _instance.Value; }
-        }
-
-        public TargetEntity TargetEntity
-        {
-            get { return _targetEntity ?? (_targetEntity = new TargetEntity()); }
-            set
-            {
-                _targetEntity = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        public bool EnmityTargetIsValid
-        {
-            get { return _enmityTargetIsValid; }
-            set
-            {
-                _enmityTargetIsValid = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        public double EnmityTargetHPPercent
-        {
-            get { return _enmityTargetHPPercent; }
-            set
-            {
-                _enmityTargetHPPercent = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        public float EnmityTargetDistance
-        {
-            get { return _enmityTargetDistance; }
-            set
-            {
-                _enmityTargetDistance = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        #endregion
-
-        #region Declarations
-
-        #endregion
-
-        #region Loading Functions
-
-        #endregion
-
-        #region Utility Functions
-
-        #endregion
-
-        #region Command Bindings
-
-        #endregion
-
-        #region Implementation of INotifyPropertyChanged
+        private TargetInfo _targetEntity;
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
-        private void RaisePropertyChanged([CallerMemberName] string caller = "")
-        {
-            PropertyChanged(this, new PropertyChangedEventArgs(caller));
+        public static EnmityWidgetViewModel Instance {
+            get {
+                return _instance.Value;
+            }
         }
 
-        #endregion
+        public float EnmityTargetDistance {
+            get {
+                return this._enmityTargetDistance;
+            }
+
+            set {
+                this._enmityTargetDistance = value;
+                this.RaisePropertyChanged();
+            }
+        }
+
+        public double EnmityTargetHPPercent {
+            get {
+                return this._enmityTargetHPPercent;
+            }
+
+            set {
+                this._enmityTargetHPPercent = value;
+                this.RaisePropertyChanged();
+            }
+        }
+
+        public bool EnmityTargetIsValid {
+            get {
+                return this._enmityTargetIsValid;
+            }
+
+            set {
+                this._enmityTargetIsValid = value;
+                this.RaisePropertyChanged();
+            }
+        }
+
+        public TargetInfo TargetEntity {
+            get {
+                return this._targetEntity ?? (this._targetEntity = new TargetInfo());
+            }
+
+            set {
+                this._targetEntity = value;
+                this.RaisePropertyChanged();
+            }
+        }
+
+        private void RaisePropertyChanged([CallerMemberName] string caller = "") {
+            this.PropertyChanged(this, new PropertyChangedEventArgs(caller));
+        }
     }
 }

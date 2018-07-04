@@ -1,144 +1,95 @@
-﻿// FFXIVAPP.Plugin.Widgets ~ MainViewModel.cs
-// 
-// Copyright © 2007 - 2017 Ryan Wilson - All Rights Reserved
-// 
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-// 
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-// 
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="MainViewModel.cs" company="SyndicatedLife">
+//   Copyright(c) 2018 Ryan Wilson &amp;lt;syndicated.life@gmail.com&amp;gt; (http://syndicated.life/)
+//   Licensed under the MIT license. See LICENSE.md in the solution root for full license information.
+// </copyright>
+// <summary>
+//   MainViewModel.cs Implementation
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Windows.Input;
-using FFXIVAPP.Common.ViewModelBase;
-using FFXIVAPP.Plugin.Widgets.Properties;
+namespace FFXIVAPP.Plugin.Widgets.ViewModels {
+    using System;
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+    using System.Windows.Input;
 
-namespace FFXIVAPP.Plugin.Widgets.ViewModels
-{
-    internal sealed class MainViewModel : INotifyPropertyChanged
-    {
-        public MainViewModel()
-        {
-            ResetEnmityWidgetCommand = new DelegateCommand(ResetEnmityWidget);
-            OpenEnmityWidgetCommand = new DelegateCommand(OpenEnmityWidget);
-            ResetFocusTargetWidgetCommand = new DelegateCommand(ResetFocusTargetWidget);
-            OpenFocusTargetWidgetCommand = new DelegateCommand(OpenFocusTargetWidget);
-            ResetCurrentTargetWidgetCommand = new DelegateCommand(ResetCurrentTargetWidget);
-            OpenCurrentTargetWidgetCommand = new DelegateCommand(OpenCurrentTargetWidget);
-        }
+    using FFXIVAPP.Common.ViewModelBase;
+    using FFXIVAPP.Plugin.Widgets.Properties;
 
-        #region Property Bindings
-
+    internal sealed class MainViewModel : INotifyPropertyChanged {
         private static Lazy<MainViewModel> _instance = new Lazy<MainViewModel>(() => new MainViewModel());
 
-        public static MainViewModel Instance
-        {
-            get { return _instance.Value; }
+        public MainViewModel() {
+            this.ResetEnmityWidgetCommand = new DelegateCommand(this.ResetEnmityWidget);
+            this.OpenEnmityWidgetCommand = new DelegateCommand(this.OpenEnmityWidget);
+            this.ResetFocusTargetWidgetCommand = new DelegateCommand(this.ResetFocusTargetWidget);
+            this.OpenFocusTargetWidgetCommand = new DelegateCommand(this.OpenFocusTargetWidget);
+            this.ResetCurrentTargetWidgetCommand = new DelegateCommand(this.ResetCurrentTargetWidget);
+            this.OpenCurrentTargetWidgetCommand = new DelegateCommand(this.OpenCurrentTargetWidget);
         }
 
-        #endregion
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
-        #region Declarations
+        public static MainViewModel Instance {
+            get {
+                return _instance.Value;
+            }
+        }
 
-        public ICommand ResetEnmityWidgetCommand { get; private set; }
-        public ICommand OpenEnmityWidgetCommand { get; private set; }
-        public ICommand ResetFocusTargetWidgetCommand { get; private set; }
-        public ICommand OpenFocusTargetWidgetCommand { get; private set; }
-        public ICommand ResetCurrentTargetWidgetCommand { get; private set; }
         public ICommand OpenCurrentTargetWidgetCommand { get; private set; }
 
-        #endregion
+        public ICommand OpenEnmityWidgetCommand { get; private set; }
 
-        #region Loading Functions
+        public ICommand OpenFocusTargetWidgetCommand { get; private set; }
 
-        #endregion
+        public ICommand ResetCurrentTargetWidgetCommand { get; private set; }
 
-        #region Utility Functions
+        public ICommand ResetEnmityWidgetCommand { get; private set; }
 
-        #endregion
+        public ICommand ResetFocusTargetWidgetCommand { get; private set; }
 
-        #region Command Bindings
-
-        public void ResetEnmityWidget()
-        {
-            Settings.Default.EnmityWidgetUIScale = Settings.Default.Properties["EnmityWidgetUIScale"]
-                                                           .DefaultValue.ToString();
-            Settings.Default.EnmityWidgetTop = Int32.Parse(Settings.Default.Properties["EnmityWidgetTop"]
-                                                                   .DefaultValue.ToString());
-            Settings.Default.EnmityWidgetLeft = Int32.Parse(Settings.Default.Properties["EnmityWidgetLeft"]
-                                                                    .DefaultValue.ToString());
-            Settings.Default.EnmityWidgetHeight = Int32.Parse(Settings.Default.Properties["EnmityWidgetHeight"]
-                                                                      .DefaultValue.ToString());
-            Settings.Default.EnmityWidgetWidth = Int32.Parse(Settings.Default.Properties["EnmityWidgetWidth"]
-                                                                     .DefaultValue.ToString());
-        }
-
-        public void OpenEnmityWidget()
-        {
-            Settings.Default.ShowEnmityWidgetOnLoad = true;
-            Widgets.Instance.ShowEnmityWidget();
-        }
-
-        public void ResetFocusTargetWidget()
-        {
-            Settings.Default.FocusTargetWidgetUIScale = Settings.Default.Properties["FocusTargetWidgetUIScale"]
-                                                                .DefaultValue.ToString();
-            Settings.Default.FocusTargetWidgetTop = Int32.Parse(Settings.Default.Properties["FocusTargetWidgetTop"]
-                                                                        .DefaultValue.ToString());
-            Settings.Default.FocusTargetWidgetLeft = Int32.Parse(Settings.Default.Properties["FocusTargetWidgetLeft"]
-                                                                         .DefaultValue.ToString());
-            Settings.Default.FocusTargetWidgetHeight = Int32.Parse(Settings.Default.Properties["FocusTargetWidgetHeight"]
-                                                                           .DefaultValue.ToString());
-            Settings.Default.FocusTargetWidgetWidth = Int32.Parse(Settings.Default.Properties["FocusTargetWidgetWidth"]
-                                                                          .DefaultValue.ToString());
-        }
-
-        public void OpenFocusTargetWidget()
-        {
-            Settings.Default.ShowFocusTargetWidgetOnLoad = true;
-            Widgets.Instance.ShowFocusTargetWidget();
-        }
-
-        public void ResetCurrentTargetWidget()
-        {
-            Settings.Default.CurrentTargetWidgetUIScale = Settings.Default.Properties["CurrentTargetWidgetUIScale"]
-                                                                  .DefaultValue.ToString();
-            Settings.Default.CurrentTargetWidgetTop = Int32.Parse(Settings.Default.Properties["CurrentTargetWidgetTop"]
-                                                                          .DefaultValue.ToString());
-            Settings.Default.CurrentTargetWidgetLeft = Int32.Parse(Settings.Default.Properties["CurrentTargetWidgetLeft"]
-                                                                           .DefaultValue.ToString());
-            Settings.Default.CurrentTargetWidgetHeight = Int32.Parse(Settings.Default.Properties["CurrentTargetWidgetHeight"]
-                                                                             .DefaultValue.ToString());
-            Settings.Default.CurrentTargetWidgetWidth = Int32.Parse(Settings.Default.Properties["CurrentTargetWidgetWidth"]
-                                                                            .DefaultValue.ToString());
-        }
-
-        public void OpenCurrentTargetWidget()
-        {
+        public void OpenCurrentTargetWidget() {
             Settings.Default.ShowCurrentTargetWidgetOnLoad = true;
             Widgets.Instance.ShowCurrentTargetWidget();
         }
 
-        #endregion
-
-        #region Implementation of INotifyPropertyChanged
-
-        public event PropertyChangedEventHandler PropertyChanged = delegate { };
-
-        private void RaisePropertyChanged([CallerMemberName] string caller = "")
-        {
-            PropertyChanged(this, new PropertyChangedEventArgs(caller));
+        public void OpenEnmityWidget() {
+            Settings.Default.ShowEnmityWidgetOnLoad = true;
+            Widgets.Instance.ShowEnmityWidget();
         }
 
-        #endregion
+        public void OpenFocusTargetWidget() {
+            Settings.Default.ShowFocusTargetWidgetOnLoad = true;
+            Widgets.Instance.ShowFocusTargetWidget();
+        }
+
+        public void ResetCurrentTargetWidget() {
+            Settings.Default.CurrentTargetWidgetUIScale = Settings.Default.Properties["CurrentTargetWidgetUIScale"].DefaultValue.ToString();
+            Settings.Default.CurrentTargetWidgetTop = int.Parse(Settings.Default.Properties["CurrentTargetWidgetTop"].DefaultValue.ToString());
+            Settings.Default.CurrentTargetWidgetLeft = int.Parse(Settings.Default.Properties["CurrentTargetWidgetLeft"].DefaultValue.ToString());
+            Settings.Default.CurrentTargetWidgetHeight = int.Parse(Settings.Default.Properties["CurrentTargetWidgetHeight"].DefaultValue.ToString());
+            Settings.Default.CurrentTargetWidgetWidth = int.Parse(Settings.Default.Properties["CurrentTargetWidgetWidth"].DefaultValue.ToString());
+        }
+
+        public void ResetEnmityWidget() {
+            Settings.Default.EnmityWidgetUIScale = Settings.Default.Properties["EnmityWidgetUIScale"].DefaultValue.ToString();
+            Settings.Default.EnmityWidgetTop = int.Parse(Settings.Default.Properties["EnmityWidgetTop"].DefaultValue.ToString());
+            Settings.Default.EnmityWidgetLeft = int.Parse(Settings.Default.Properties["EnmityWidgetLeft"].DefaultValue.ToString());
+            Settings.Default.EnmityWidgetHeight = int.Parse(Settings.Default.Properties["EnmityWidgetHeight"].DefaultValue.ToString());
+            Settings.Default.EnmityWidgetWidth = int.Parse(Settings.Default.Properties["EnmityWidgetWidth"].DefaultValue.ToString());
+        }
+
+        public void ResetFocusTargetWidget() {
+            Settings.Default.FocusTargetWidgetUIScale = Settings.Default.Properties["FocusTargetWidgetUIScale"].DefaultValue.ToString();
+            Settings.Default.FocusTargetWidgetTop = int.Parse(Settings.Default.Properties["FocusTargetWidgetTop"].DefaultValue.ToString());
+            Settings.Default.FocusTargetWidgetLeft = int.Parse(Settings.Default.Properties["FocusTargetWidgetLeft"].DefaultValue.ToString());
+            Settings.Default.FocusTargetWidgetHeight = int.Parse(Settings.Default.Properties["FocusTargetWidgetHeight"].DefaultValue.ToString());
+            Settings.Default.FocusTargetWidgetWidth = int.Parse(Settings.Default.Properties["FocusTargetWidgetWidth"].DefaultValue.ToString());
+        }
+
+        private void RaisePropertyChanged([CallerMemberName] string caller = "") {
+            this.PropertyChanged(this, new PropertyChangedEventArgs(caller));
+        }
     }
 }

@@ -27,7 +27,8 @@
           DataContext="{StaticResource MainViewModel}">
         <ScrollViewer>
             <StackPanel>
-                <GroupBox Header="{Binding Locale[widgets_EnmityWidgetHeader],
+                <GroupBox
+                    Header="{Binding Locale[widgets_EnmityWidgetHeader],
                                            Source={StaticResource PluginViewModel}}">
                     <StackPanel>
                         <DockPanel LastChildFill="True">
@@ -45,7 +46,8 @@
                         </DockPanel>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="{Binding Locale[widgets_FocusWidgetHeader],
+                <GroupBox
+                    Header="{Binding Locale[widgets_FocusWidgetHeader],
                                            Source={StaticResource PluginViewModel}}">
                     <StackPanel>
                         <DockPanel LastChildFill="True">
@@ -63,7 +65,8 @@
                         </DockPanel>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="{Binding Locale[widgets_CurrentWidgetHeader],
+                <GroupBox
+                    Header="{Binding Locale[widgets_CurrentWidgetHeader],
                                            Source={StaticResource PluginViewModel}}">
                     <StackPanel>
                         <DockPanel LastChildFill="True">

@@ -46,16 +46,18 @@
             <x:Static x:Key="FocusTargetWidgetViewModel"
                       Member="ViewModels:FocusTargetWidgetViewModel.Instance" />
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/FFXIVAPP.Plugin.Widgets;component/Resources/WidgetStyle.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/FFXIVAPP.Plugin.Widgets;component/Resources/WidgetStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
 
     <Grid x:Name="LayoutRoot">
         <Grid.LayoutTransform>
-            <ScaleTransform ScaleX="{Binding FocusTargetWidgetUIScale,
+            <ScaleTransform
+                ScaleX="{Binding FocusTargetWidgetUIScale,
                                              Source={StaticResource Settings}}"
-                            ScaleY="{Binding FocusTargetWidgetUIScale,
+                ScaleY="{Binding FocusTargetWidgetUIScale,
                                              Source={StaticResource Settings}}" />
         </Grid.LayoutTransform>
         <StackPanel>
