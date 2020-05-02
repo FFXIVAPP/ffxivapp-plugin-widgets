@@ -184,7 +184,7 @@
             <ItemsControl>
                 <ItemsControl.Resources>
                     <CollectionViewSource x:Key="Party"
-                                          Source="{Binding TargetEntity.EnmityEntries,
+                                          Source="{Binding TargetEntity.EnmityItems,
                                                            Source={StaticResource EnmityWidgetViewModel}}">
                         <CollectionViewSource.SortDescriptions>
                             <componentModel:SortDescription Direction="Descending"
@@ -220,7 +220,7 @@
                                            Foreground="Black"
                                            Style="{StaticResource CommaNumberStyle}"
                                            Text="{Binding Enmity,
-                                                          StringFormat={}{0:N0}}" />
+                                                          StringFormat={}{0}%}" />
                                 <TextBlock Grid.Row="0"
                                            Margin="5 0"
                                            HorizontalAlignment="Left"

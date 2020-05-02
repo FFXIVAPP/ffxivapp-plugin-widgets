@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="WinAPI.cs" company="SyndicatedLife">
-//   Copyright(c) 2018 Ryan Wilson &amp;lt;syndicated.life@gmail.com&amp;gt; (http://syndicated.life/)
+//   Copyright© 2007 - 2020 Ryan Wilson &amp;lt;syndicated.life@gmail.com&amp;gt; (https://syndicated.life/)
 //   Licensed under the MIT license. See LICENSE.md in the solution root for full license information.
 // </copyright>
 // <summary>
@@ -44,13 +44,13 @@ namespace FFXIVAPP.Plugin.Widgets.Interop {
                        : string.Empty;
         }
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll"),]
         public static extern IntPtr GetForegroundWindow();
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll"),]
         public static extern int GetWindowText(IntPtr hWnd, StringBuilder text, int count);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll"),]
         public static extern IntPtr SetWinEventHook(uint eventMin, uint eventMax, IntPtr hmodWinEventProc, WinEventDelegate lpfnWinEventProc, uint idProcess, uint idThread, uint dwFlags);
 
         public static void ToggleClickThrough(Window window) {
@@ -68,7 +68,7 @@ namespace FFXIVAPP.Plugin.Widgets.Interop {
             }
         }
 
-        [DllImport("user32.dll", SetLastError = true)]
+        [DllImport("user32.dll", SetLastError = true),]
         private static extern int GetWindowLong(IntPtr hwnd, int index);
 
         private static void SetWindowLayered(IntPtr hwnd) {
@@ -77,7 +77,7 @@ namespace FFXIVAPP.Plugin.Widgets.Interop {
             SetWindowLong(hwnd, GWL_EXSTYLE, extendedStyle);
         }
 
-        [DllImport("user32.dll", SetLastError = true)]
+        [DllImport("user32.dll", SetLastError = true),]
         private static extern int SetWindowLong(IntPtr hwnd, int index, int newStyle);
 
         private static void SetWindowTransparent(IntPtr hwnd) {

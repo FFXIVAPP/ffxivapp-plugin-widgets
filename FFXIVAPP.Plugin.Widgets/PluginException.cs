@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="PluginException.cs" company="SyndicatedLife">
-//   Copyright(c) 2018 Ryan Wilson &amp;lt;syndicated.life@gmail.com&amp;gt; (http://syndicated.life/)
+//   Copyright© 2007 - 2020 Ryan Wilson &amp;lt;syndicated.life@gmail.com&amp;gt; (https://syndicated.life/)
 //   Licensed under the MIT license. See LICENSE.md in the solution root for full license information.
 // </copyright>
 // <summary>
@@ -12,17 +12,14 @@ namespace FFXIVAPP.Plugin.Widgets {
     using System;
     using System.Runtime.Serialization;
 
-    [Serializable]
+    [Serializable,]
     public class PluginException : Exception {
         public PluginException() { }
 
-        public PluginException(string message)
-            : base(message) { }
+        public PluginException(string message) : base(message) { }
 
-        public PluginException(string message, Exception inner)
-            : base(message, inner) { }
+        public PluginException(string message, Exception inner) : base(message, inner) { }
 
-        protected PluginException(SerializationInfo info, StreamingContext context)
-            : base(info, context) { }
+        protected PluginException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     }
 }
